@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --light-blue : #33ABEF;
+    --dark-blue : #004AAD;
+    --white-green : #D4EFEB;
+    --dusty-pink : #D58A94;
+    --gray-color : #808080;
+}
+
+main {
+    text-align: left;
+    padding-right: 10em;
+    padding-left: 12em;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding-right: 10em;
+    padding-left: 12em;
+    background-color: var(--light-blue);
+}
+
+#nav1 {
+    padding-top: .2em;
+    padding-bottom: 1em;
+}
+
+#nav2 {
+    display: flex;
+    flex: 1 1 auto;
+    width: 13em;
+    color: #bed9f2;
+    align-items: center;
+}
+
+#nav2 h2 a {
+    color: var(--dark-blue);
+    padding: .4em 1em .4em 1em;
+    min-width: 90px;
+    max-width: none;
+    white-space: nowrap;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px !important;
+    font-family: Söhne, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+#nav2 h2 {
+    padding: .4em 1em .4em 1em;
+    transition: background-color .3s;
+}
+
+
+#nav2 h2:hover {
+    background-color: #5cbcf2;
+    cursor: pointer;
+}
+
+#home {
+    background-color: #adddf9 !important;
+}
+
+#calendar {
+    padding-top: 1em;
+    height: 2em !important;
+    max-width: 65em !important;
+    min-width: 20em !important;
+    font-size: 1em;
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: .9em;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    font-size: 1em;
+  }
+}
+
+#info {
+    margin-left: -11em;
+}
+
+#main-rest {
+    padding-top: 13em;
+}
+
+#vacation-days,
+#sick-days,
+#time-worked-week {
+    background-color: var(--light-blue);
+}
+
+
+
+.fc .fc-button {
+    height: 3em;
+}
+
+.fc-button {
+    transition: color .3s linear
+}
+
+.fc-button:hover {
+    background-color: white;
+}
+
+.fc-state-hover {
+    background-position: 0 -46px !important;
+}
+
+.fc-state-disabled {
+    color: white !important;
+}
+
+.fc-center {
+    border-right-width: 0px;
+    margin-right: 300px;
+}
+
+.fc-center h2 {
+    width: 300px;
+}

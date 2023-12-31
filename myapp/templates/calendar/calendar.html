@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <!--https://workschedule.net/-->
+    <head>
+        <title>Work Scheduler</title>
+        <script src="../../static/javascript/calendar.js"></script>
+        <link rel="stylesheet" href="../../static/css/calendar.css">
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flask Calendar</title>
+        <!-- Include jQuery first -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Include FullCalendar CSS and JS from CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../../static/images/circle-favicon.png">
+    </head>
+    <body>
+        <header>
+            <div id="nav1">
+                <img src="../../static/images/horizontal-logo.png" alt="image" width="200em">
+            </div>
+            <div id="nav2">
+                <h2><a href="{{ url_for('bp.home') }}">Home</a></h2>
+                <h2 id="highlight"><a href="{{ url_for('bp.calendar') }}">Calendar</a></h2>
+                {% if employee_supervisor == 'employee' %}
+                    <h2><a href="{{ url_for('bp.rwtc') }}">Shift Change</a></h2>
+                {% endif %}
+                {% if employee_supervisor == 'supervisor' %}
+                    <h2><a href="{{ url_for('bp.employees') }}">Employees</a></h2>
+                {% endif %}
+            </div>
+        </header>
+        <main>
+            <div id="calendar"></div>
+        </main>
+    </body>
+</html>
+

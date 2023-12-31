@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <!--https://workschedule.net/-->
+    <head>
+        <title>Work Scheduler</title>
+        <script src="../../static/javascript/employees.js"></script>
+        <link rel="stylesheet" href="../../static/css/employees.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="../../static/images/circle-favicon.png">
+    </head>
+    <body>
+        <header>
+            <div id="nav1">
+                <img src="../../static/images/horizontal-logo.png" alt="image" width="200em">
+            </div>
+            <div id="nav2">
+                <h2><a href="{{ url_for('bp.home') }}">Home</a></h2>
+                <h2><a href="{{ url_for('bp.calendar') }}">Calendar</a></h2>
+                <h2><a href="{{ url_for('bp.rwtc') }}">Shift Change</a></h2>
+                {% if employee_supervisor == 'supervisor' %}
+                    <h2 id="highlight"><a href="{{ url_for('bp.employees') }}">Employees</a></h2>
+                {% endif %}
+            </div>
+        </header>
+        <main>
+            <div id="main-rest">
+                <div id="info">
+
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
+
