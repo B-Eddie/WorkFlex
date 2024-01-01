@@ -156,11 +156,72 @@ def rwtc():
 def employees():
     return render_template("employees/employees.html")
 
+
+@bp.route("/time-worked-week-change", methods=['POST'])
+def time_worked_week_change():
+    time = request.form.get("time-worked-week")
+    id_tww = session['existing_user_login.id']
+    e_s = session['employee-supervisor']
+
+    if e_s == 'employee':
+        info = Employee.query.filter_by(id=id_tww).first()
+        info.weekTime_worked = time
+        db.session.commit()
+
+        return redirect(url_for('bp.home'))
+    elif e_s == 'supervisor':
+        info = Supervisor.query.filter_by(id=id_tww).first()
+        info.weekTime_worked = time
+        db.session.commit()
+
+        return redirect(url_for('bp.home'))
+
+
+@bp.route("/vacation-days-left-change", methods=['POST'])
+def vacation_days_left_change():
+    amount = request.form.get("vacation-days-left")
+    id_tww = session['existing_user_login.id']
+    e_s = session['employee-supervisor']
+
+    if e_s == 'employee':
+        info = Employee.query.filter_by(id=id_tww).first()
+        info.vacation_days = amount
+        db.session.commit()
+
+        return redirect(url_for('bp.home'))
+    elif e_s == 'supervisor':
+        info = Supervisor.query.filter_by(id=id_tww).first()
+        info.vacation_days = amount
+        db.session.commit()
+
+        return redirect(url_for('bp.home'))
+
+
+@bp.route("/sick-days-left-change", methods=['POST'])
+def sick_days_left_change():
+    amount = request.form.get("sick-days-left")
+    id_tww = session['existing_user_login.id']
+    e_s = session['employee-supervisor']
+
+    if e_s == 'employee':
+        info = Employee.query.filter_by(id=id_tww).first()
+        info.sick_days = amount
+        db.session.commit()
+
+        return redirect(url_for('bp.home'))
+    elif e_s == 'supervisor':
+        info = Supervisor.query.filter_by(id=id_tww).first()
+        info.sick_days = amount
+        db.session.commit()
+
+        return redirect(url_for('bp.home'))
+
+
 # replace with putting inside home
 @bp.route("/get_events")
 def get_events():
     events = [
-        {'title': 'Event 1', 'start': '2023-12-28', 'description': 'hiasef'},
+        {'title': 'Event 1', 'start': '2023-12-28', 'description': 'something'},
         {'title': 'Event 2', 'start': '2023-11-16'},
         {'id': 1, 'title': 'Event 21', 'start': '2023-11-01T10:00:00', 'end': '2023-11-01T12:00:00'},
     ]

@@ -33,43 +33,82 @@
                     <h2><a href="{{ url_for('bp.employees') }}">Employees</a></h2>
                 {% endif %}
             </div>
-        </header>
-        <main>
-            <div id="calendar"></div>
-            <div id="info">
-                <div id="vacation-days" style="display: inline-flex;">
-                    <div id="vac-left">
-                        <h4 style="font-weight: normal;">Vacation Days &emsp;&nbsp;&nbsp;</h4>
-                    </div>
-                    <div id="vac-right">
-                        <h4>2</h4>
-                    </div>
-                </div>
-                <br><br>
-                <div id="sick-days" style="display: inline-flex;">
-                    <div id="sic-left">
-                        <h4 style="font-weight: normal;">Sick Days &emsp;&emsp;&emsp;&nbsp;</h4>
-                    </div>
-                    <div id="sic-right">
-                        <h4>3</h4>
-                    </div>
-                </div>
-                <br><br>
-                <div id="time-worked-week" style="display: inline-flex;">
-                    <div id="tim-left">
-                        <h4 style="font-weight: normal;">Time worked <br>this week &emsp;&emsp;&emsp;&nbsp;&nbsp;</h4>
-                    </div>
-                    <div id="tim-right" style="margin-top: .5em;">
-                        <h4>1</h4>
-                    </div>
-                </div>
+            <div id="profile">
+                <!--make icon have name when pressed and if too long, make it "..."-->
             </div>
-            <div id="main-rest">
+        </header>
 
+        <div id="gray-background"></div>
+
+        <div id="time-worked-week-popup" class="info-change">
+            <h1>Change your time worked this week</h1>
+            <br><br>
+            <form action="/time-worked-week-change" method="post">
+                <input type="text" name="time-worked-week" placeholder="Enter hours worked" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div id="vacation-days-left" class="info-change">
+            <h1>Change your amount of vacation days left</h1>
+            <br><br>
+            <form action="/vacation-days-left-change" method="post">
+                <input type="text" name="vacation-days-left" placeholder="Enter vacation days left" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div id="sick-days-left" class="info-change">
+            <h1>Change your amount of sick days left</h1>
+            <br><br>
+            <form action="/sick-days-left-change" method="post">
+                <input type="text" name="sick-days-left" placeholder="Enter sick days left" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+
+        <main>
+            <br><br>
+            <div style="background-color: white;">
+            <div id="calendar"></div>
+
+            <div id="main-rest">
+                <div id="info">
+                    <div id="vacation-days">
+                        <div id="vac-left">
+                            <h4 style="font-weight: normal;">Vacation Days <br>left &emsp;&emsp;&emsp;&emsp;&emsp;</h4>
+                        </div>
+                        <div id="vac-right" style="margin-top: .5em;">
+                            <h4 id="vac-right-txt" class="info-highlight">{{ info.vacation_days }}</h4>
+                        </div>
+                    </div>
+                    <div id="sick-days">
+                        <div id="sic-left">
+                            <h4 style="font-weight: normal;">Sick Days <br>left&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;</h4>
+                        </div>
+                        <div id="sic-right" style="margin-top: .5em;">
+                            <h4 id="sic-right-txt" class="info-highlight">{{ info.sick_days }}</h4>
+                        </div>
+                    </div>
+                    <div id="time-worked-week">
+                        <div id="tim-left">
+                            <h4 style="font-weight: normal;">Time worked <br>this week &emsp;&emsp;&nbsp;&nbsp;</h4>
+                        </div>
+                        <div id="tim-right" style="margin-top: .5em;">
+                            <h4 id="tim-right-txt" class="info-highlight">{{ info.weekTime_worked }}</h4>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <br><br>
                 <div id="notifications"> <!--make it so that most important on top or seperate them by groups.
                 make if you want to switch times with someone, confirmation popup -->
                     <h1>Notifications</h1>
                 </div>
+
+
+                <!--maybe put resources at bottom-->
             </div>
         </main>
     </body>

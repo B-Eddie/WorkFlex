@@ -8,7 +8,13 @@ class Employee(db.Model):
     password = db.Column(db.String(10280), nullable=False)
     email = db.Column(db.String(256), unique=True, nullable=False)
     supervisor_email = db.Column(db.String(502), unique=False, nullable=False)
+
     notifications = db.Column(db.Text, unique=False, nullable=True)
+    from_supervisor_alert = db.Column(db.Text, unique=False, nullable=True)  #anything supervisors sends
+    switch_times_alert = db.Column(db.Text, unique=False, nullable=True)
+    schedule_change_alert = db.Column(db.Text, unique=False, nullable=True)
+    request_alert = db.Column(db.Text, unique=False, nullable=True)   # like when supervisor approves a sick day or vacation day
+
     vacation_days = db.Column(db.Integer, unique=False, nullable=True)
     sick_days = db.Column(db.Integer, unique=False, nullable=True)
     weekTime_worked = db.Column(db.String(100), unique=False, nullable=True)
@@ -25,6 +31,10 @@ class Employee(db.Model):
         self.email = email
         self.supervisor_email = supervisor_email
 
+        self.vacation_days = 0
+        self.sick_days = 0
+        self.weekTime_worked = 0
+
 
 class Supervisor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,6 +42,17 @@ class Supervisor(db.Model):
     password = db.Column(db.String(10280), nullable=False)
     email = db.Column(db.String(256), unique=True, nullable=False)
     employees_emails = db.Column(db.String(502), unique=False, nullable=True)
+
+    notifications = db.Column(db.Text, unique=False, nullable=True)
+    employee_added_alert = db.Column(db.Text, unique=False, nullable=True)
+    sick_day_alert = db.Column(db.Text, unique=False, nullable=True)
+    vacation_day_alert = db.Column(db.Text, unique=False, nullable=True)
+
+    history = db.Column(db.Text, unique=False, nullable=True)
+
+    vacation_days = db.Column(db.Integer, unique=False, nullable=True)
+    sick_days = db.Column(db.Integer, unique=False, nullable=True)
+    weekTime_worked = db.Column(db.String(100), unique=False, nullable=True)
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
@@ -43,6 +64,10 @@ class Supervisor(db.Model):
         self.username = username
         self.set_password(password)
         self.email = email
+
+        self.vacation_days = 0
+        self.sick_days = 0
+        self.weekTime_worked = 0
 
 
 class ShiftCalendar(db.Model):
