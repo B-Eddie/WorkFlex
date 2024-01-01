@@ -156,6 +156,7 @@ def rwtc():
 def employees():
     return render_template("employees/employees.html")
 
+# replace with putting inside home
 @bp.route("/get_events")
 def get_events():
     events = [
