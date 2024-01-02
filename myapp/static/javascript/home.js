@@ -7,10 +7,16 @@
 }); */
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById("vac-right-txt").addEventListener("click", vac_popup);
-    document.getElementById("sic-right-txt").addEventListener("click", sic_popup);
-    document.getElementById("tim-right-txt").addEventListener("click", tim_popup);
+    document.getElementById("vacation-days").addEventListener("click", vac_popup);
+    document.getElementById("sick-days").addEventListener("click", sic_popup);
+    document.getElementById("time-worked-week").addEventListener("click", tim_popup);
     document.getElementById("gray-background").addEventListener("click", gray_click);
+
+    document.getElementById("profile").addEventListener("mouseover", profile_icon_hover);
+    document.getElementById("profile").addEventListener("mouseout", profile_icon_out_hover);
+    document.getElementById("profile-popup").addEventListener("mouseout", profile_icon_out_hover);
+    document.getElementById("profile-popup").addEventListener("mouseover", profile_icon_hover);
+
 
     $(document).ready(function () {
         // Initialize FullCalendar
@@ -28,6 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
         $('.fc-prev-button').html('<i class="material-icons">navigate_before</i>');
     });
 });
+
+function profile_icon_hover() {
+    document.getElementById("profile-popup").style.visibility = "visible";
+}
+function profile_icon_out_hover() {
+    document.getElementById("profile-popup").style.visibility = "hidden";
+}
+
 
 
 function gray_click() {

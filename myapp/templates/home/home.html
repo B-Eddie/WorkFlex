@@ -17,6 +17,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="../../static/images/circle-favicon.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"> <!--Font-->
+
+        <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet"> <!--icons-->
     </head>
     <body>
         <header>
@@ -32,16 +38,22 @@
                 {% if employee_supervisor == 'supervisor' %}
                     <h2><a href="{{ url_for('bp.employees') }}">Employees</a></h2>
                 {% endif %}
-            </div>
-            <div id="profile">
-                <!--make icon have name when pressed and if too long, make it "..."-->
+                <div id="profile">
+                    <!--make icon have name when pressed and if too long, make it "..."-->
+                    <i class="fa-light fa-user"></i>
+                </div>
+                <div id="profile-popup">
+                    <h1>{{ info.username }}</h1>
+                    <h4>{{ employee_supervisor }}</h4>
+                    <h2><a href="{{ url_for('bp.logout') }}">Log Out</a></h2>
+                </div>
             </div>
         </header>
 
         <div id="gray-background"></div>
 
         <div id="time-worked-week-popup" class="info-change">
-            <h1>Change your time worked this week</h1>
+            <h1>Change your hours worked this week</h1>
             <br><br>
             <form action="/time-worked-week-change" method="post">
                 <input type="text" name="time-worked-week" placeholder="Enter hours worked" required>
@@ -69,47 +81,50 @@
 
 
         <main>
-            <br><br>
-            <div style="background-color: white;">
-            <div id="calendar"></div>
-
-            <div id="main-rest">
-                <div id="info">
+            <div id="info">
                     <div id="vacation-days">
-                        <div id="vac-left">
-                            <h4 style="font-weight: normal;">Vacation Days <br>left &emsp;&emsp;&emsp;&emsp;&emsp;</h4>
-                        </div>
-                        <div id="vac-right" style="margin-top: .5em;">
-                            <h4 id="vac-right-txt" class="info-highlight">{{ info.vacation_days }}</h4>
+                        <div class="info-section" id="vac-left">
+                            <i class="fa-light fa-island-tropical"></i>
+                            <div class="info-content">
+                                <h4 style="font-weight: normal;">Vacation Days left</h4>
+                                <h4 id="vac-right-txt" class="info-highlight">{{ info.vacation_days }}</h4>
+                            </div>
                         </div>
                     </div>
+
                     <div id="sick-days">
-                        <div id="sic-left">
-                            <h4 style="font-weight: normal;">Sick Days <br>left&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;</h4>
-                        </div>
-                        <div id="sic-right" style="margin-top: .5em;">
-                            <h4 id="sic-right-txt" class="info-highlight">{{ info.sick_days }}</h4>
+                        <div class="info-section" id="sic-left">
+                            <i class="fa-light fa-thermometer"></i>
+                            <div class="info-content">
+                                <h4 style="font-weight: normal;">Sick Days left</h4>
+                                <h4 id="sic-right-txt" class="info-highlight">{{ info.sick_days }}</h4>
+                            </div>
                         </div>
                     </div>
+
                     <div id="time-worked-week">
-                        <div id="tim-left">
-                            <h4 style="font-weight: normal;">Time worked <br>this week &emsp;&emsp;&nbsp;&nbsp;</h4>
-                        </div>
-                        <div id="tim-right" style="margin-top: .5em;">
-                            <h4 id="tim-right-txt" class="info-highlight">{{ info.weekTime_worked }}</h4>
+                        <div class="info-section" id="tim-left">
+                            <i class="fa-light fa-clock"></i>
+                            <div class="info-content">
+                                <h4 style="font-weight: normal;">Hours worked this week</h4>
+                                <h4 id="tim-right-txt" class="info-highlight">{{ info.weekTime_worked }}</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
-                <br><br>
-                <div id="notifications"> <!--make it so that most important on top or seperate them by groups.
-                make if you want to switch times with someone, confirmation popup -->
-                    <h1>Notifications</h1>
-                </div>
-
-
-                <!--maybe put resources at bottom-->
+            <div class="white-background" style="padding-bottom: 20em;">
+            <div id="calendar"></div>
             </div>
+            <div id="main-rest">
+                <div id="notifications"> <!--make it so that most important on top or seperate them by groups.
+            make if you want to switch times with someone, confirmation popup -->
+                <h1>Notifications</h1>
+            </div>
+            </div>
+
+
+
+            <!--maybe put resources at bottom-->
         </main>
     </body>
 </html>

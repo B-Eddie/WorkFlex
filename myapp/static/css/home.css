@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 :root {
@@ -7,6 +8,7 @@
     --dark-blue : #004AAD;
     --white-green : #D4EFEB;
     --dusty-pink : #D58A94;
+
     --gray-color : #808080;
 }
 
@@ -17,6 +19,7 @@ main {
     background-color: #eff1f7;
     padding-right: 10em;
     padding-left: 12em;
+    font-family: 'Montserrat';
 }
 
 header {
@@ -24,19 +27,20 @@ header {
     flex-direction: column;
     flex: 1 1 auto;
     padding-right: 10em;
-    padding-left: 12em;
+    padding-left: 1em;
     background-color: var(--light-blue);
 }
 
 #nav1 {
     padding-top: .2em;
     padding-bottom: 1em;
+    text-align: left;
 }
 
 #nav2 {
     display: flex;
     flex: 1 1 auto;
-    width: 13em;
+    width: 100%;
     color: #bed9f2;
     align-items: center;
 }
@@ -51,7 +55,6 @@ header {
     text-decoration: none;
     font-weight: bold;
     font-size: 16px !important;
-    font-family: Söhne, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 }
 #nav2 h2 {
@@ -65,13 +68,33 @@ header {
     cursor: pointer;
 }
 
+#profile {
+    margin-left: auto;
+}
+
+#profile-popup {
+    position: fixed;
+    z-index: 10204102423;
+    border: 1px solid black;
+    background-color: white;
+    top: 28%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    visibility: hidden;
+    max-width: 10em; /* Adjust the maximum width as needed */
+    width: 80%; /* Set a percentage width for responsiveness */
+    text-align: left; /* Center text within the container */
+}
+
 #home {
     background-color: #adddf9 !important;
 }
 
 #calendar {
-    padding-top: 1em;
-    padding-left: 2em;
+    margin-left: 1em;
+    margin-top: -2em;
+    padding-top: 2em;
     height: 2em !important;
     max-width: 65em !important;
     min-width: 20em !important;
@@ -90,37 +113,57 @@ header {
   }
 }
 
-#main-rest {
-    padding-top: 18em;
-}
+
+/* the 3 boxes */
 
 #info {
-    margin-left: -11em;
+    display: flex;
+    padding: 3em 1em 2em 1em;
+    justify-content: space-between;
+    color: white;
 }
 
-#vacation-days,
-#sick-days,
-#time-worked-week {
-    border: 1px solid lightgray;
-    display: inline-flex;
-    margin-left: 12em;
+.info-section {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #33ABEF, #004AAD); /* Gradient background */
+    padding: 1em;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+    transition: transform 0.3s ease; /* Transition effect */
 }
 
-#vac-left,
-#sic-left,
-#tim-left {
-    background-color: var(--light-blue);
-    padding: 1em 0 1em 1em;
+.info-section:hover {
+    transform: scale(1.05); /* Scale up on hover */
+    cursor: pointer;
 }
 
-#vac-right,
-#sic-right,
-#tim-right {
-    font-size: 1.1vw;
+.info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-light {
+    margin-right: 1em;
+    font-size: 1.5em; /* Adjust the icon size */
+}
+
+#vac-right-txt,
+#sic-right-txt,
+#tim-right-txt {
+    margin-top: 0.5em;
+}
+
+.white-background {
     background-color: white;
-    padding: 1em 3em 1em 1em;
-    width: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
+
+
+/* after */
+
 
 #gray-background {
     position: absolute;
@@ -134,28 +177,34 @@ header {
 .info-change {
     position: fixed;
     z-index: 1020410241;
-    border: 1px solid;
+    border: 1px solid var(--dark-blue);
     box-shadow: 2px 5px 5px var(--light-blue);
-    background-color: white;
+    background-color: var(--white-green);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 2em;
     visibility: hidden;
+    max-width: 400px; /* Adjust the maximum width as needed */
+    width: 80%; /* Set a percentage width for responsiveness */
+    text-align: center; /* Center text within the container */
 }
 
 .info-change input {
+    margin-top: 1em; /* Add spacing between input and button */
     padding: 1em;
-    width: 28.6em;
+    width: 100%; /* Make the input full-width */
+    box-sizing: border-box; /* Include padding in the width calculation */
 }
 
 .info-change button {
-    color: white;
+    margin-top: 1em; /* Add spacing above the button */
     padding: 1em;
-    border: 1px solid black;
+    width: 100%; /* Make the button full-width */
+    border: 1px solid var(--dark-blue);
     text-decoration: none;
     background-color: var(--light-blue);
-    transition: background-color .3s linear;
+    transition: background-color 0.3s linear;
 }
 
 .info-change button:hover {
@@ -164,22 +213,10 @@ header {
 }
 
 
+
 .visible {
     visibility: visible !important;
 }
-
-
-.info-highlight {
-    color: black;
-    transition: color .2s linear;
-}
-
-.info-highlight:hover {
-    color: var(--light-blue);
-    cursor: pointer
-}
-
-
 
 .fc .fc-button {
     height: 3em;
@@ -207,5 +244,5 @@ header {
 }
 
 .fc-center h2 {
-    width: 300px;
+    width: 400px;
 }

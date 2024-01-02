@@ -38,6 +38,12 @@ def home():
     return redirect(url_for('bp.index'))
 
 
+@bp.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('bp.index'))
+
+
 @bp.route("/signup", methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
