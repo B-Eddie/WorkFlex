@@ -16,14 +16,12 @@
 
 main {
     display: flex;
-    text-align: center;
+    text-align: left;
     justify-content: center;
     background-color: #eff1f7;
-    padding-right: 2em;
-    padding-left: 2em;
-    padding-top: 3em;
+    padding: 1em 2em 1em 2em;
     font-family: 'Montserrat';
-    height: 25em;
+    align-items: center;
 }
 
 header {
@@ -73,6 +71,11 @@ header {
 #profile-right {
     display: flex;
     flex-direction: column;
+}
+
+.fa-light {
+    margin-right: 1em;
+    font-size: 1.5em;
 }
 
 
@@ -140,21 +143,12 @@ header {
     cursor: pointer;
 }
 
-#rwtc {
+#add_shifts {
     background-color: #adddf9 !important;
 }
 
 
-/*not the navbar calendar*/
-#calendar {
-    margin-left: 1em;
-    margin-top: -2em;
-    padding-top: 2em;
-    height: 2em !important;
-    max-width: 65em !important;
-    min-width: 20em !important;
-    font-size: 1em;
-}
+
 
 @media (min-width: 600px) {
   body {
@@ -234,86 +228,66 @@ header {
     cursor: pointer;
 }
 
+/*next*/
+
+#form-container {
+    min-width: 30em;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+#form-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--dark-blue);
+}
+
+#radios {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 1em;
+}
+
+#radio-none,
+#radio-day,
+#radio-week {
+    margin-top: .5em;
+    margin-right: -1em !important;
+    margin-left: 3em;
+    width: 10% !important;
+}
+
+#form-container input,
+#form-container button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#form-container button {
+    background-color: var(--light-blue);
+    cursor: pointer;
+}
+
+#calendar {
+    flex: 1;
+    margin-left: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 1em;
+}
+
+
 .visible {
     visibility: visible !important;
 }
-
-.fa-light {
-    margin-right: 1em;
-    font-size: 1.5em; /* Adjust the icon size */
-}
-
-/*                                                CAN CHANGE*/
-#calendar {
-    display: flex;
-    flex: 2; /* Adjusted size for the calendar */
-    margin-bottom: 2em;
-    background-color: white;
-    padding: 1em 2em 27em 2em;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Added box shadow */
-}
-#form-container {
-    flex: 1;
-    background-color: var(--light-blue-2);
-    padding: 2em;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease; /* Added transition effect for box shadow */
-
-    /* Center the content within the form-container */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Added hover effect for a subtle interaction */
-#form-container:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-h1 {
-    color: var(--dark-blue);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-label {
-    margin-top: 1em;
-    color: var(--gray-color);
-}
-
-select,
-input {
-    margin-top: 0.5em;
-    padding: 0.5em;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: var(--dark-blue);
-}
-
-button {
-    margin-top: 1em;
-    padding: 0.7em 1em; /* Slightly increased button padding */
-    background-color: var(--light-blue);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Added transition effect */
-}
-
-button:hover {
-    background-color: var(--light-blue-2);
-}
-
 
 .fc .fc-button {
     height: 3em;
@@ -332,14 +306,15 @@ button:hover {
 }
 
 .fc-state-disabled {
+    visibility: hidden;
     color: white !important;
 }
 
 .fc-center {
     border-right-width: 0px;
-    margin-right: 300px;
+    margin-right: 5em;
 }
 
 .fc-center h2 {
-    width: 300px;
+    width: 400px;
 }

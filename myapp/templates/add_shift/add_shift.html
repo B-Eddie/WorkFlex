@@ -1,40 +1,39 @@
 <!DOCTYPE html>
-<html>
-    <!--https://workschedule.net/-->
-    <head>
-        <title>Work Scheduler</title>
-        <script src="../../static/javascript/home.js"></script>
-        <link rel="stylesheet" href="../../static/css/home.css">
-        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Flask Calendar</title>
-        <!-- Include jQuery first -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <!-- Include FullCalendar CSS and JS from CDN -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="../../static/images/circle-favicon.png">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"> <!--Font-->
-
-        <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet"> <!--icons-->
-    </head>
-    <body>
-        <header>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Scheduler</title>
+    <!-- Include your JavaScript and CSS files -->
+    <script src="../../static/javascript/add_shift.js"></script>
+    <link rel="stylesheet" href="../../static/css/add_shift.css">
+    <!-- Include FullCalendar libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <!--Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font Awesome icons -->
+    <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../static/images/circle-favicon.png">
+</head>
+<body>
+    <header>
             <div id="nav1">
                 <img src="../../static/images/horizontal-logo.png" alt="image" width="200em">
             </div>
             <div id="nav2">
-                <h2 id="home"><a href="{{ url_for('bp.home') }}">Home</a></h2>
+                <h2><a href="{{ url_for('bp.home') }}">Home</a></h2>
                 <h2><a href="{{ url_for('bp.calendar') }}">Calendar</a></h2>
                 {% if employee_supervisor == 'employee' %}
                     <h2><a href="{{ url_for('bp.rwtc') }}">Shift Change</a></h2>
-                    <h2><a href="{{ url_for('bp.shift_add') }}">Add Shifts</a></h2>
+                    <h2 id="add_shifts"><a href="{{ url_for('bp.shift_add') }}">Add Shifts</a></h2>
                 {% endif %}
                 {% if employee_supervisor == 'supervisor' %}
                     <h2><a href="{{ url_for('bp.employees') }}">Employees</a></h2>
@@ -53,8 +52,11 @@
                 </div>
             </div>
         </header>
-        <main>
+    <div id="selective-gray-background"></div>
+    <main>
+        <div id="form-container">
             <h2>Add Your Working Shift</h2>
+            <br>
             <form method="POST" action="/add_shift">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" required><br>
@@ -75,12 +77,21 @@
                 <input type="text" id="supervisor" name="supervisor"><br>
 
                 <label>Repeat:</label>
-                <input type="radio" name="repeat" value="none" checked> None
-                <input type="radio" name="repeat" value="every_day"> Every Day
-                <input type="radio" name="repeat" value="every_week"> Every Week<br>
+                <div id="radios">
+                    <input type="radio" name="repeat" value="none" class="radio" id="radio-none" checked>
+                    <label for="radio-none">None</label>
 
+                    <input type="radio" name="repeat" value="every_day" id="radio-day" class="radio">
+                    <label for="radio-day">Every Day</label>
+
+                    <input type="radio" name="repeat" value="every_week" id="radio-week" class="radio">
+                    <label for="radio-week">Every Week</label>
+                </div>
+                <br><br>
                 <button type="submit">Add Shift</button>
             </form>
+        </div>
+        <div id="calendar"></div>
         </main>
     </body>
 </html>

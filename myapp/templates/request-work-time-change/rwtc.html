@@ -3,8 +3,8 @@
     <!--https://workschedule.net/-->
     <head>
         <title>Work Scheduler</title>
-        <script src="../../static/javascript/home.js"></script>
-        <link rel="stylesheet" href="../../static/css/home.css">
+        <script src="../../static/javascript/rwtc.js"></script>
+        <link rel="stylesheet" href="../../static/css/rwtc.css">
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,10 +30,10 @@
                 <img src="../../static/images/horizontal-logo.png" alt="image" width="200em">
             </div>
             <div id="nav2">
-                <h2 id="home"><a href="{{ url_for('bp.home') }}">Home</a></h2>
+                <h2><a href="{{ url_for('bp.home') }}">Home</a></h2>
                 <h2><a href="{{ url_for('bp.calendar') }}">Calendar</a></h2>
                 {% if employee_supervisor == 'employee' %}
-                    <h2><a href="{{ url_for('bp.rwtc') }}">Shift Change</a></h2>
+                    <h2 id="rwtc"><a href="{{ url_for('bp.rwtc') }}">Shift Change</a></h2>
                     <h2><a href="{{ url_for('bp.shift_add') }}">Add Shifts</a></h2>
                 {% endif %}
                 {% if employee_supervisor == 'supervisor' %}
@@ -51,26 +51,33 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </header>
         <div id="selective-gray-background"></div>
         <main>
-            <h1>Switch Work Times</h1>
-            <form action="/request-work-time-change-submit" method="post">
-                <label for="shift_title">Your Shift Title:</label>
-                <select id="shift_title" name="shift_title" required>
-                    {% for shift in current_times %}
-                        <option value="{{ shift.id }}">{{ shift.date }} - {{ shift.start_time }} to {{ shift.end_time }}</option>
-                    {% endfor %}
-                </select>
+            <div id="form-container">
+                <h1>Switch Work Times</h1>
+                <form action="/request-work-time-change-submit" method="post">
+                    <label for="shift_title">Your Shift Time:</label>
+                    <select id="shift_title" name="shift_title" required>
+                        {% for shift in current_times %}
+                            <option value="{{ shift.id }}">{{ shift.date }} - {{ shift.start_time }} to {{ shift.end_time }}</option>
+                        {% endfor %}
+                    </select>
 
-                <label for="target_employee">Employee to Switch With:</label>
-                <input type="text" id="target_employee" name="target_employee" required>
+                    <label for="target_employee">Employee to Switch With:</label>
+                    <!--<input type="text" id="target_employee" name="target_employee" placeholder="Email" required>-->
+                    <select id="target_employee" name="target_employee" required>
+                        {% for human in coworkers %}
+                            <option value="{{ human.id }}">{{ human.email }}</option>
+                        {% endfor %}
+                    </select>
 
-                <button type="submit">Submit</button>
-            </form>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div id='calendar'></div>
         </main>
     </body>
 </html>
