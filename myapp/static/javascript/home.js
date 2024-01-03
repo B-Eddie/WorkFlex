@@ -37,9 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function profile_icon_hover() {
     document.getElementById("profile-popup").style.visibility = "visible";
+    document.getElementById("selective-gray-background").classList.add("visible");
 }
 function profile_icon_out_hover() {
     document.getElementById("profile-popup").style.visibility = "hidden";
+    document.getElementById("selective-gray-background").classList.remove("visible");
 }
 
 

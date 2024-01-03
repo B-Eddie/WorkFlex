@@ -6,6 +6,7 @@
 :root {
     --light-blue : #33ABEF;
     --dark-blue : #004AAD;
+    --light-blue-2 : #bed9f2;
     --white-green : #D4EFEB;
     --dusty-pink : #D58A94;
 
@@ -45,6 +46,74 @@ header {
     align-items: center;
 }
 
+#profile {
+    position: relative;
+    padding: 0;
+    margin-left: auto;
+    margin-bottom: -10px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: -1.2em;
+    color: var(--dark-blue);
+    z-index: 5;
+}
+
+#profile h4 {
+    color: var(--light-blue-2);
+}
+
+#profile i {
+    margin-top: .5em;
+}
+
+#profile-right {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*Profile popup*/
+
+#profile-popup {
+    position: absolute;
+    z-index: 12312321320;
+    background-color: white;
+    padding: 2em;
+    visibility: hidden;
+    max-width: 10em;
+    width: 80%;
+    text-align: left;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    top: 100%; /* position it below the #profile element */
+    left: 0;
+}
+
+#profile:hover #profile-popup {
+    visibility: visible;
+}
+
+#profile-popup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#profile-popup h3 {
+    padding-left: .3em;
+}
+
+#profile-popup-logout a {
+    display: block;
+    color: #33ABEF;
+    text-decoration: none;
+}
+
+#profile-popup-logout a:hover {
+    text-decoration: underline;
+}
+
 #nav2 h2 a {
     color: var(--dark-blue);
     padding: .4em 1em .4em 1em;
@@ -68,29 +137,12 @@ header {
     cursor: pointer;
 }
 
-#profile {
-    margin-left: auto;
-}
-
-#profile-popup {
-    position: fixed;
-    z-index: 10204102423;
-    border: 1px solid black;
-    background-color: white;
-    top: 28%;
-    right: 5%;
-    transform: translate(-50%, -50%);
-    padding: 2em;
-    visibility: hidden;
-    max-width: 10em; /* Adjust the maximum width as needed */
-    width: 80%; /* Set a percentage width for responsiveness */
-    text-align: left; /* Center text within the container */
-}
-
 #home {
     background-color: #adddf9 !important;
 }
 
+
+/*not the navbar calendar*/
 #calendar {
     margin-left: 1em;
     margin-top: -2em;
@@ -164,15 +216,31 @@ header {
 
 /* after */
 
-
 #gray-background {
-    position: absolute;
+    position: fixed;
     z-index: 1020410240;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(105, 105, 105, 0.5);
-    padding: 100em;
-    margin-top: -10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     visibility: hidden;
 }
+
+#selective-gray-background {
+    position: absolute;
+    top: 8.8em; /* Adjust this value to match the height of your header */
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(105, 105, 105, 0.3);
+    visibility: hidden;
+}
+
 
 .info-change {
     position: fixed;

@@ -185,3 +185,7 @@ main {
 #login {
     transition: all .3s;
 }
+
+#back-button-signup:hover {
+    cursor: pointer;
+}

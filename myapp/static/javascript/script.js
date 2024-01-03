@@ -13,12 +13,17 @@
     });
 });*/
 
-document.getElementById("signup-link").addEventListener("click", changeSL);
-document.getElementById("login-link").addEventListener("click", changeSLA);
-document.getElementById("login-link1").addEventListener("click", changeSLA);
-document.getElementById("login-link2").addEventListener("click", changeSLA);
-document.getElementById("signup-link1").addEventListener("click", changeSL);
-document.getElementById("signup-continue-button").addEventListener("click", part2);
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("signup-link").addEventListener("click", changeSL);
+    document.getElementById("login-link").addEventListener("click", changeSLA);
+    document.getElementById("login-link1").addEventListener("click", changeSLA);
+    document.getElementById("login-link2").addEventListener("click", changeSLA);
+    document.getElementById("signup-link1").addEventListener("click", changeSL);
+    document.getElementById("signup-continue-button").addEventListener("click", part2);
+
+    document.getElementById("back-button-signup").addEventListener("click", changeSL)
+});
+
 
 function changeSL() {
     document.getElementById("signup").style.display = "block";

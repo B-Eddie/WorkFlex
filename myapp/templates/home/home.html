@@ -34,6 +34,7 @@
                 <h2><a href="{{ url_for('bp.calendar') }}">Calendar</a></h2>
                 {% if employee_supervisor == 'employee' %}
                     <h2><a href="{{ url_for('bp.rwtc') }}">Shift Change</a></h2>
+                    <h2><a href="{{ url_for('bp.shift_add') }}">Add Shifts</a></h2>
                 {% endif %}
                 {% if employee_supervisor == 'supervisor' %}
                     <h2><a href="{{ url_for('bp.employees') }}">Employees</a></h2>
@@ -41,16 +42,22 @@
                 <div id="profile">
                     <!--make icon have name when pressed and if too long, make it "..."-->
                     <i class="fa-light fa-user"></i>
+                    <div id="profile-right">
+                        <h1 id="profile-popup-username">{{ info.username }}</h1>
+                        <h4 id="profile-popup-es">{{ employee_supervisor }}</h4>
+                        <div id="profile-popup">
+                            <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                            <h3 id="profile-popup-logout"><a href="{{ url_for('bp.logout') }}">Log Out</a></h3>
+                        </div>
+                    </div>
                 </div>
-                <div id="profile-popup">
-                    <h1>{{ info.username }}</h1>
-                    <h4>{{ employee_supervisor }}</h4>
-                    <h2><a href="{{ url_for('bp.logout') }}">Log Out</a></h2>
-                </div>
+
             </div>
+
         </header>
 
         <div id="gray-background"></div>
+        <div id="selective-gray-background"></div>
 
         <div id="time-worked-week-popup" class="info-change">
             <h1>Change your hours worked this week</h1>

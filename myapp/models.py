@@ -9,8 +9,6 @@ class Employee(db.Model):
     email = db.Column(db.String(256), unique=True, nullable=False)
     supervisor_email = db.Column(db.String(502), unique=False, nullable=False)
 
-    notifications = db.Column(db.Text, unique=False, nullable=True)
-    from_supervisor_alert = db.Column(db.Text, unique=False, nullable=True)  #anything supervisors sends
     switch_times_alert = db.Column(db.Text, unique=False, nullable=True)
     schedule_change_alert = db.Column(db.Text, unique=False, nullable=True)
     request_alert = db.Column(db.Text, unique=False, nullable=True)   # like when supervisor approves a sick day or vacation day
@@ -43,7 +41,6 @@ class Supervisor(db.Model):
     email = db.Column(db.String(256), unique=True, nullable=False)
     employees_emails = db.Column(db.String(502), unique=False, nullable=True)
 
-    notifications = db.Column(db.Text, unique=False, nullable=True)
     employee_added_alert = db.Column(db.Text, unique=False, nullable=True)
     sick_day_alert = db.Column(db.Text, unique=False, nullable=True)
     vacation_day_alert = db.Column(db.Text, unique=False, nullable=True)
@@ -72,12 +69,13 @@ class Supervisor(db.Model):
 
 class ShiftCalendar(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(2000), nullable=False)
     date = db.Column(db.Date, nullable=False)
     start_time = db.Column(db.Time, nullable=False)
     end_time = db.Column(db.Time, nullable=False)
     location = db.Column(db.String(2000), nullable=True)
     supervisor = db.Column(db.String(1000), nullable=True)
-    employees = db.Column(db.String(10000), nullable=True)
+    employee = db.Column(db.String(10000), nullable=True)
 
 
 # switch working times with other employees, request sick day/
