@@ -169,7 +169,9 @@ header {
 /* the 3 boxes */
 
 #info {
+    user-select: none;
     display: flex;
+    align-items: center;
     padding: 3em 1em 2em 1em;
     justify-content: space-between;
     color: white;
@@ -203,7 +205,8 @@ header {
 
 #vac-right-txt,
 #sic-right-txt,
-#tim-right-txt {
+#tim-right-txt,
+#send-message-txt {
     margin-top: 0.5em;
 }
 

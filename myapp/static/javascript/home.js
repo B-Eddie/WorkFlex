@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("vacation-days").addEventListener("click", vac_popup);
     document.getElementById("sick-days").addEventListener("click", sic_popup);
     document.getElementById("time-worked-week").addEventListener("click", tim_popup);
+    document.getElementById("send-message").addEventListener("click", msg_popup);
+
     document.getElementById("gray-background").addEventListener("click", gray_click);
 
     document.getElementById("profile").addEventListener("mouseover", profile_icon_hover);
@@ -50,9 +52,13 @@ function gray_click() {
     var tim = document.getElementById("time-worked-week-popup").classList;
     var sic = document.getElementById("sick-days-left").classList;
     var vac = document.getElementById("vacation-days-left").classList;
+    var msg = document.getElementById("send-message-popup").classList;
 
     if (tim.contains("visible")) {
         tim.remove("visible");
+        document.getElementById("gray-background").classList.toggle("visible");
+    } else if (msg.contains("visible")) {
+        msg.remove("visible");
         document.getElementById("gray-background").classList.toggle("visible");
     } else if (sic.contains("visible")) {
         sic.remove("visible");
@@ -61,6 +67,11 @@ function gray_click() {
         vac.remove("visible");
         document.getElementById("gray-background").classList.toggle("visible");
     }
+}
+
+function msg_popup() {
+    document.getElementById("gray-background").classList.toggle("visible");
+    document.getElementById("send-message-popup").classList.toggle("visible");
 }
 
 

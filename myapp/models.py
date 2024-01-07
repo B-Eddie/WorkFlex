@@ -1,5 +1,7 @@
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.dialects.postgresql import ARRAY
+
 
 
 class Employee(db.Model):
@@ -12,6 +14,7 @@ class Employee(db.Model):
     switch_times_alert = db.Column(db.Text, unique=False, nullable=True)
     schedule_change_alert = db.Column(db.Text, unique=False, nullable=True)
     request_alert = db.Column(db.Text, unique=False, nullable=True)   # like when supervisor approves a sick day or vacation day
+    msg_alert = db.Column(db.Text, unique=False, nullable=True)
 
     vacation_days = db.Column(db.Integer, unique=False, nullable=True)
     sick_days = db.Column(db.Integer, unique=False, nullable=True)
@@ -44,6 +47,7 @@ class Supervisor(db.Model):
     employee_added_alert = db.Column(db.Text, unique=False, nullable=True)
     sick_day_alert = db.Column(db.Text, unique=False, nullable=True)
     vacation_day_alert = db.Column(db.Text, unique=False, nullable=True)
+    msg_alert = db.Column(db.Text, unique=False, nullable=True)
 
     history = db.Column(db.Text, unique=False, nullable=True)
 
@@ -83,10 +87,13 @@ class Requests(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(256), unique=True, nullable=False)
 
+    # only if it's for a calendar event change
     date = db.Column(db.Date, nullable=True)
     start_time = db.Column(db.Time, nullable=True)
     end_time = db.Column(db.Time, nullable=True)
 
-    supervisor_email = db.Column(db.String(256), unique=False, nullable=False)
+    supervisor_email = db.Column(db.String(256), unique=False, nullable=True)
     from_employee_email = db.Column(db.String(256), unique=False, nullable=False)
     to_email = db.Column(db.String(256), unique=False, nullable=True)
+
+    message = db.Column(db.Text, unique=False, nullable=True)

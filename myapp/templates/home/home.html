@@ -61,6 +61,32 @@
         <div id="gray-background"></div>
         <div id="selective-gray-background"></div>
 
+        {% if employee_supervisor == 'employee' %}
+            <div id="send-message-popup" class="info-change">
+                <h1>Send a message</h1>
+                <br><br>
+                <form action="/send-message" method="post">
+                    <input type="text" name="message" placeholder="Write your message here" required>
+
+                    <label for="send-message-select">Person to send to:</label>
+                    <select id="send-message-select" name="send-message-select" required>
+                        <optgroup label="------ Other employees ------">
+                            {% for employee in people_employees %}
+                                <option value="{{ employee.id }}">{{ employee.email }}</option>
+                            {% endfor %}
+                        </optgroup>
+
+                        <optgroup label="------ Supervisor ------">
+                            {% for supervisor in people_supervisors %}
+                                <option value="{{ supervisor.id }}">{{ supervisor }}</option>
+                            {% endfor %}
+                        </optgroup>
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        {% endif %}
+
         <div id="time-worked-week-popup" class="info-change">
             <h1>Change your hours worked this week</h1>
             <br><br>
@@ -91,6 +117,18 @@
 
         <main>
             <div id="info">
+                    {% if employee_supervisor == 'employee' %}
+                        <div id="send-message">
+                            <div class="info-section" id="send-message-left">
+                                <i class="fa-light fa-envelope"></i>
+                                <div class="info-content">
+                                    <h4 style="font-weight: normal;">Send a message</h4>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div id="send-message" style="display: none;"></div>  <!--ignore the error because of the ifelse statement-->
+                    {% endif %}
                     <div id="vacation-days">
                         <div class="info-section" id="vac-left">
                             <i class="fa-light fa-island-tropical"></i>
@@ -128,8 +166,21 @@
                 <div id="notifications"> <!--make it so that most important on top or seperate them by groups.
             make if you want to switch times with someone, confirmation popup -->
 <!--                    MAKE IT LIKE A BUNCH OF DROPDOWN MENUES LIKE FINDER-->
-                <h1>Notifications</h1>
-            </div>
+                    <h1>Notifications</h1>
+                    {% if employee_supervisor == 'employee' %}
+                    <div class="shift-change">
+
+                    </div>
+                    <div id="request-approved">
+
+                    </div>
+                    <div id="messages"></div>
+                    {% endif %}
+                    {% if employee_supervisor == 'supervisor' %}
+                    <div class="shift-change"></div>
+                    <div class="new-employee"></div>
+                    {% endif %}
+                </div>
             </div>
 
 
