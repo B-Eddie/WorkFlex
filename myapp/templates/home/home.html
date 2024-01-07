@@ -30,14 +30,16 @@
                 <img src="../../static/images/horizontal-logo.png" alt="image" width="200em">
             </div>
             <div id="nav2">
-                <h2 id="home"><a href="{{ url_for('bp.home') }}">Home</a></h2>
-                <h2><a href="{{ url_for('bp.calendar') }}">Calendar</a></h2>
+                <a class="navh" id="home" href="{{ url_for('bp.home') }}">Home</a>
+                <a class="navh" href="{{ url_for('bp.calendar') }}">Calendar</a>
                 {% if employee_supervisor == 'employee' %}
-                    <h2><a href="{{ url_for('bp.rwtc') }}">Shift Change</a></h2>
-                    <h2><a href="{{ url_for('bp.shift_add') }}">Add Shifts</a></h2>
+                    <a class="navh" href="{{ url_for('bp.rwtc') }}">Shift Change</a>
+                    <a class="navh" href="{{ url_for('bp.shift_add') }}">Add Shifts</a>
                 {% endif %}
                 {% if employee_supervisor == 'supervisor' %}
-                    <h2><a href="{{ url_for('bp.employees') }}">Employees</a></h2>
+                    <a class="navh" href="{{ url_for('bp.employees') }}">Employees</a>
+                    <a class="navh" href="{{ url_for('bp.shift_add') }}">Add Shifts</a>
+                    <a class="navh" href="{{ url_for('bp.rwtc') }}">Shift Change</a>
                 {% endif %}
                 <div id="profile">
                     <!--make icon have name when pressed and if too long, make it "..."-->
@@ -125,6 +127,7 @@
             <div id="main-rest">
                 <div id="notifications"> <!--make it so that most important on top or seperate them by groups.
             make if you want to switch times with someone, confirmation popup -->
+<!--                    MAKE IT LIKE A BUNCH OF DROPDOWN MENUES LIKE FINDER-->
                 <h1>Notifications</h1>
             </div>
             </div>

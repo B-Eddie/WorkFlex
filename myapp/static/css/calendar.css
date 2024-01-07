@@ -133,11 +133,8 @@ header {
     text-decoration: underline;
 }
 
-#nav2 h2 a {
+.navh {
     color: var(--dark-blue);
-    padding: .4em 1em .4em 1em;
-    min-width: 90px;
-    max-width: none;
     white-space: nowrap;
     align-items: center;
     text-decoration: none;
@@ -145,13 +142,13 @@ header {
     font-size: 16px !important;
 
 }
-#nav2 h2 {
-    padding: .4em 1em .4em 1em;
-    transition: background-color .3s;
+.navh {
+    padding: 16px 40px 13px 40px;
+    transition: background-color 0.3s;
 }
 
 
-#nav2 h2:hover {
+.navh:hover {
     background-color: #5cbcf2;
     cursor: pointer;
 }

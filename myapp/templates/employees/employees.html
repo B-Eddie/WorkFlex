@@ -8,6 +8,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="../../static/images/circle-favicon.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"> <!--font-->
+
+        <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet"> <!--icons-->
     </head>
     <body>
         <header>
@@ -15,19 +21,92 @@
                 <img src="../../static/images/horizontal-logo.png" alt="image" width="200em">
             </div>
             <div id="nav2">
-                <h2><a href="{{ url_for('bp.home') }}">Home</a></h2>
-                <h2><a href="{{ url_for('bp.calendar') }}">Calendar</a></h2>
-                <h2><a href="{{ url_for('bp.rwtc') }}">Shift Change</a></h2>
-                {% if employee_supervisor == 'supervisor' %}
-                    <h2 id="highlight"><a href="{{ url_for('bp.employees') }}">Employees</a></h2>
-                {% endif %}
+                <a class="navh" href="{{ url_for('bp.home') }}">Home</a>
+                <a class="navh" href="{{ url_for('bp.calendar') }}">Calendar</a>
+                <a class="navh" id="highlight" href="{{ url_for('bp.employees') }}">Employees</a>
+                <a class="navh" href="{{ url_for('bp.shift_add') }}">Add Shifts</a>
+                <a class="navh" href="{{ url_for('bp.rwtc') }}">Shift Change</a>
+                <div id="profile">
+                    <!--make icon have name when pressed and if too long, make it "..."-->
+                    <i class="fa-light fa-user"></i>
+                    <div id="profile-right">
+                        <h1 id="profile-popup-username">{{ info.username }}</h1>
+                        <h4 id="profile-popup-es">{{ employee_supervisor }}</h4>
+                        <div id="profile-popup">
+                            <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                            <h3 id="profile-popup-logout"><a href="{{ url_for('bp.logout') }}">Log Out</a></h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
+        <div id="selective-gray-background"></div>
         <main>
-            <div id="main-rest">
-                <div id="info">
+            <div id="employees">
+                {% for employee in employees %}
+                    <div class="employee">
+                        <h2 class="employee-name">{{ employee.username }}</h2>
+                        <div class="actions">
+                            <p onclick="showPopup('send-message-{{ employee.id }}')">Send Message</p>
+                            <p onclick="showPopup('change-sick-days-{{ employee.id }}')">Change Sick Days</p>
+                            <p onclick="showPopup('change-vacation-days-{{ employee.id }}')">Change Vacation Days</p>
+                            <p onclick="showPopup('change-hours-worked-this-week-{{ employee.id }}')">Change Hours Worked This Week</p>
+                        </div>
+                    </div>
 
-                </div>
+                    <div class="popups">
+                        <div class="popups">
+                            <div class="employee-popup" id="send-message-{{ employee.id }}">
+                                <div class="send-message">
+                                    <h1>Send a message to {{ employee.username }}</h1>
+                                    <form action="/send-message" method="post">
+                                        <input type="hidden" name="employee_id" value="{{ employee.id }}">
+                                        <input type="text" name="message" placeholder="Write your message">
+                                        <input type="submit">
+                                    </form>
+                                    <button class="close-button" onclick="hidePopup('send-message-{{ employee.id }}')">&#10006;</button>
+                                </div>
+                            </div>
+
+                            <div class="employee-popup" id="change-sick-days-{{ employee.id }}">
+                                <div class="change-sick-days">
+                                    <h1>Change sick days for {{ employee.username }}</h1>
+                                    <form action="/change-sick-days" method="post">
+                                        <input type="hidden" name="employee_id" value="{{ employee.id }}">
+                                        <input type="text" name="message" placeholder="Write new sick days">
+                                        <input type="submit">
+                                    </form>
+                                    <button class="close-button" onclick="hidePopup('change-sick-days-{{ employee.id }}')">&#10006;</button>
+                                </div>
+                            </div>
+
+                            <div class="employee-popup" id="change-vacation-days-{{ employee.id }}">
+                                <div class="change-vacation-days">
+                                    <h1>Change vacation days for {{ employee.username }}</h1>
+                                    <form action="/change-vacation-days" method="post">
+                                        <input type="hidden" name="employee_id" value="{{ employee.id }}">
+                                        <input type="text" name="message" placeholder="Write new vacation days">
+                                        <input type="submit">
+                                    </form>
+                                    <button class="close-button" onclick="hidePopup('change-vacation-days-{{ employee.id }}')">&#10006;</button>
+                                </div>
+                            </div>
+
+                            <div class="employee-popup" id="change-hours-worked-this-week-{{ employee.id }}">
+                                <div class="change-hours-worked-this-week">
+                                    <h1>Change hours worked this week for {{ employee.username }}</h1>
+                                    <form action="/change-hours-worked-this-week" method="post">
+                                        <input type="hidden" name="employee_id" value="{{ employee.id }}">
+                                        <input type="text" name="message" placeholder="Write new hours worked">
+                                        <input type="submit">
+                                    </form>
+                                    <button class="close-button" onclick="hidePopup('change-hours-worked-this-week-{{ employee.id }}')">&#10006;</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
             </div>
         </main>
     </body>
