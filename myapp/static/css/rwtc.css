@@ -22,6 +22,7 @@ main {
     padding-right: 2em;
     padding-left: 2em;
     padding-top: 3em;
+    padding-bottom: 12em;
     font-family: 'Montserrat';
     height: 25em;
 }
@@ -190,7 +191,7 @@ header {
     z-index: 2;
     left: 0;
     width: 100%;
-    min-height: 85vh;
+    min-height: 80vh;
     background-color: rgba(105, 105, 105, 0.3);
     visibility: hidden;
 }
