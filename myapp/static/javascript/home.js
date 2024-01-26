@@ -35,6 +35,24 @@ document.addEventListener('DOMContentLoaded', function() {
         $('.fc-next-button').html('<i class="material-icons">navigate_next</i>');
         $('.fc-prev-button').html('<i class="material-icons">navigate_before</i>');
     });
+    $(document).ready(function() {
+        $('.delete-message').click(function() {
+            var index = $(this).data('message');
+            $.ajax({
+                type: 'POST',
+                url: '/delete-message',
+                data: { index: index },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        // Refresh the page or update the message list as needed
+                        location.reload(); // This reloads the page
+                    } else {
+                        console.log('Failed to delete message.');
+                    }
+                }
+            });
+        });
+    });
 });
 
 function profile_icon_hover() {
@@ -89,4 +107,5 @@ function sic_popup() {
     document.getElementById("gray-background").classList.toggle("visible");
     document.getElementById("sick-days-left").classList.toggle("visible");
 }
+
 
