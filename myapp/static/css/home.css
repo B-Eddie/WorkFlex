@@ -283,6 +283,32 @@ header {
     cursor: pointer;
 }
 
+/*notifications*/
+#message-container {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+    padding: 1em;
+}
+
+.messages {
+    display: flex;
+    padding-bottom: 1em;
+    flex-direction: row;
+}
+
+.messages i {
+    margin-top: .2em;
+    height: 25px;
+    transition: color .3s ease;
+}
+
+.messages i:hover {
+    cursor: pointer;
+    color: lightgray;
+}
+/*end notifs*/
+
 
 
 .visible {

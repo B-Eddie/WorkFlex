@@ -2,7 +2,7 @@
 <html>
     <!--https://workschedule.net/-->
     <head>
-        <title>Work Scheduler</title>
+        <title>WorkFlex</title>
         <script src="../../static/javascript/home.js"></script>
         <link rel="stylesheet" href="../../static/css/home.css">
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
@@ -72,13 +72,13 @@
                     <select id="send-message-select" name="send-message-select" required>
                         <optgroup label="------ Other employees ------">
                             {% for employee in people_employees %}
-                                <option value="{{ employee.id }}">{{ employee.email }}</option>
+                                <option value="{{ employee.id }}|e">{{ employee.email }}</option>
                             {% endfor %}
                         </optgroup>
 
                         <optgroup label="------ Supervisor ------">
                             {% for supervisor in people_supervisors %}
-                                <option value="{{ supervisor.id }}">{{ supervisor }}</option>
+                                <option value="{{ supervisor.id }}|s">{{ supervisor }}</option>
                             {% endfor %}
                         </optgroup>
                     </select>
@@ -118,7 +118,7 @@
         <main>
             <div id="info">
                     {% if employee_supervisor == 'employee' %}
-                        <div id="send-message">
+                        <div id="send-message">       <!--ignore error-->
                             <div class="info-section" id="send-message-left">
                                 <i class="fa-light fa-envelope"></i>
                                 <div class="info-content">
@@ -167,25 +167,56 @@
             make if you want to switch times with someone, confirmation popup -->
 <!--                    MAKE IT LIKE A BUNCH OF DROPDOWN MENUES LIKE FINDER-->
                     <h1>Notifications</h1>
-                    {% if employee_supervisor == 'employee' %}
-                    <div class="shift-change">
+                    <div id="notification-content">
+                        {% if employee_supervisor == 'employee' %}
+                            <div class="shift-change">
 
-                    </div>
-                    <div id="request-approved">
+                            </div>
+                            <div id="request-approved">
 
+                            </div>
+                            {% if message_alerts %}
+                                <div id="message-container">   <!--ignore error-->
+                                    <h2>Messages</h2>
+                                    <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                                    {% for message in message_alerts %}
+                                        <div class="messages">
+                                            <i class="fa-light fa-circle-xmark"></i>
+                                            <h3>{{ message }}</h3>
+                                            <div class="message-content">
+                                                <h2>{{ message['from_employee_email'] }}</h2>
+                                                <p>{{ message['message'] }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% else %}   <!--supervisors-->
+                            <div class="shift-change"></div>
+                            {% if message_alerts %}
+                                <div id="message-container">  <!--ignore error-->
+                                    <h2>Messages</h2>
+                                    <hr style="border-top: 1px solid #ccc;"><br>
+                                    {% for message in message_alerts %}
+                                        <div class="messages">
+                                            <i class="fa-light fa-circle-xmark"></i>
+                                            <div class="message-content">
+                                                <h2>{{ message['from_employee_email'] }}</h2>
+                                                <p>{{ message['message'] }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <div class="new-employee"></div>
+                        {% endif %}
                     </div>
-                    <div id="messages"></div>
-                    {% endif %}
-                    {% if employee_supervisor == 'supervisor' %}
-                    <div class="shift-change"></div>
-                    <div class="new-employee"></div>
-                    {% endif %}
                 </div>
             </div>
 
 
 
-            <!--maybe put resources at bottom-->
+            <!--Footer at bottom-->
         </main>
     </body>
 </html>

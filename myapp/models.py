@@ -1,7 +1,6 @@
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy.dialects.postgresql import ARRAY
-
+import json
 
 
 class Employee(db.Model):
@@ -13,7 +12,8 @@ class Employee(db.Model):
 
     switch_times_alert = db.Column(db.Text, unique=False, nullable=True)
     schedule_change_alert = db.Column(db.Text, unique=False, nullable=True)
-    request_alert = db.Column(db.Text, unique=False, nullable=True)   # like when supervisor approves a sick day or vacation day
+    request_alert = db.Column(db.Text, unique=False,
+                              nullable=True)  # like when supervisor approves a sick day or vacation day
     msg_alert = db.Column(db.Text, unique=False, nullable=True)
 
     vacation_days = db.Column(db.Integer, unique=False, nullable=True)
@@ -91,6 +91,10 @@ class Requests(db.Model):
     date = db.Column(db.Date, nullable=True)
     start_time = db.Column(db.Time, nullable=True)
     end_time = db.Column(db.Time, nullable=True)
+
+    date_change = db.Column(db.Date, nullable=True)
+    start_time_change = db.Column(db.Time, nullable=True)
+    end_time_change = db.Column(db.Time, nullable=True)
 
     supervisor_email = db.Column(db.String(256), unique=False, nullable=True)
     from_employee_email = db.Column(db.String(256), unique=False, nullable=False)
