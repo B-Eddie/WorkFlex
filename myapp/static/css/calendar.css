@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --light-blue : #33ABEF;
+    --dark-blue : #004AAD;
+    --light-blue-2 : #bed9f2;
+    --white-green : #D4EFEB;
+    --dusty-pink : #D58A94;
+
+    --gray-color : #808080;
+}
+
+.fa-light {
+    margin-right: 1em;
+    font-size: 1.5em;
+}
+
+#selective-gray-background {
+    position: absolute;
+    top: 8.8em; /* Adjust this value to match the height of your header */
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(105, 105, 105, 0.3);
+    visibility: hidden;
+}
+
+
+.visible {
+    visibility: visible !important;
+}
+
+main {
+    text-align: left;
+    justify-content: center;
+    padding-right: 10em;
+    padding-left: 12em;
+    font-family: 'Montserrat';
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding-right: 10em;
+    padding-left: 1em;
+    background-color: var(--light-blue);
+}
+
+#nav1 {
+    padding-top: .2em;
+    padding-bottom: 1em;
+    text-align: left;
+}
+
+#nav2 {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    color: #bed9f2;
+    align-items: center;
+}
+
+#profile {
+    position: relative;
+    padding: 0;
+    margin-left: auto;
+    margin-bottom: -10px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: -1.2em;
+    color: var(--dark-blue);
+    z-index: 5;
+}
+
+#profile h4 {
+    color: var(--light-blue-2);
+}
+
+#profile i {
+    margin-top: .5em;
+}
+
+#profile-right {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*Profile popup*/
+
+#profile-popup {
+    position: absolute;
+    z-index: 12312321320;
+    background-color: white;
+    padding: 2em;
+    visibility: hidden;
+    max-width: 10em;
+    width: 80%;
+    text-align: left;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    top: 100%; /* position it below the #profile element */
+    left: 0;
+}
+
+#profile:hover #profile-popup {
+    visibility: visible;
+}
+
+#profile-popup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#profile-popup h3 {
+    padding-left: .3em;
+}
+
+#profile-popup-logout a {
+    display: block;
+    color: #33ABEF;
+    text-decoration: none;
+}
+
+#profile-popup-logout a:hover {
+    text-decoration: underline;
+}
+
+.navh {
+    color: var(--dark-blue);
+    white-space: nowrap;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px !important;
+
+}
+.navh {
+    padding: 16px 40px 13px 40px;
+    transition: background-color 0.3s;
+}
+
+
+.navh:hover {
+    background-color: #5cbcf2;
+    cursor: pointer;
+}
+
+#highlight {
+    background-color: #adddf9 !important;
+}
+
+#calendar {
+    padding: 1em;
+    height: 2em !important;
+    max-width: 65em !important;
+    min-width: 20em !important;
+    font-size: 1em;
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: .9em;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    font-size: 1em;
+  }
+}
+
+
+#main-rest {
+    padding-top: 20em;
+}
+
+.fc .fc-button {
+    height: 3em;
+}
+
+.fc-button {
+    transition: color .3s linear
+}
+
+.fc-button:hover {
+    background-color: white;
+}
+
+.fc-state-hover {
+    background-position: 0 -46px !important;
+}
+
+.fc-state-disabled {
+    color: white !important;
+}
+
+.fc-center {
+    border-right-width: 0px;
+    margin-right: 300px;
+}
+
+.fc-center h2 {
+    width: 300px;
+}
