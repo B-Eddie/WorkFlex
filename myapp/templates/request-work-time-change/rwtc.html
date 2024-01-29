@@ -68,17 +68,28 @@
                         {% endfor %}
                     </select>
 
+                    <label for="switch_type">Switch Type:</label>
+                    <select id="switch_type" name="switch_type" required>
+                        <option value="individual">Individual Shift</option>
+                        <option value="whole">Entire Shift</option>
+                    </select>
+
                     <label for="target_employee">Co-worker to Switch With:</label>
-                    <!--<input type="text" id="target_employee" name="target_employee" placeholder="Email" required>-->
                     <select id="target_employee" name="target_employee" required>
                         {% for human in coworkers %}
                             <option value="{{ human.id }}">{{ human.email }}</option>
                         {% endfor %}
                     </select>
 
+                    <label for="available_shifts">Available Shifts:</label>
+                    <select id="available_shifts" name="available_shifts" required>
+                        <!-- Options will be dynamically populated by JavaScript -->
+                    </select>
+
                     <button type="submit">Submit</button>
                 </form>
             </div>
+
             <div id='calendar'></div>
         </main>
     </body>

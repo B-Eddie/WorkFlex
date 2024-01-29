@@ -13,7 +13,7 @@ class Employee(db.Model):
     switch_times_alert = db.Column(db.Text, unique=False, nullable=True)
     schedule_change_alert = db.Column(db.Text, unique=False, nullable=True)
     request_alert = db.Column(db.Text, unique=False,
-                              nullable=True)  # like when supervisor approves a sick day or vacation day
+                              nullable=True)  # like when supervisor approves a sick day or vacation day DELETE?
     msg_alert = db.Column(db.Text, unique=False, nullable=True)
 
     vacation_days = db.Column(db.Integer, unique=False, nullable=True)

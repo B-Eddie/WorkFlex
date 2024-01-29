@@ -89,7 +89,13 @@
                     <input type="radio" name="repeat" value="every_week" id="radio-week" class="radio">
                     <label for="radio-week">Every Week</label>
                 </div>
+                <label for="repeat_end_date">End Repeat Date:</label>
+                <input type="date" id="repeat_end_date" name="repeat_end_date">
+
                 <br><br>
+                {% if error %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endif %}
                 <button type="submit">Add Shift</button>
             </form>
         </div>

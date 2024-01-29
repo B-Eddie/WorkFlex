@@ -27,6 +27,32 @@ document.addEventListener('DOMContentLoaded', function() {
         $('.fc-next-button').html('<i class="material-icons">navigate_next</i>');
         $('.fc-prev-button').html('<i class="material-icons">navigate_before</i>');
     });
+
+    $(document).ready(function() {
+        $('#target_employee').change(function() {
+            var selectedEmployeeId = $(this).val();  // Get the value of the selected option
+            if (selectedEmployeeId) {  // Check if a value is selected
+                $.ajax({
+                    url: '/get-available-shifts/' + selectedEmployeeId,
+                    type: 'GET',
+                    success: function(response) {
+                        var availableShifts = response;
+                        $('#available_shifts').empty();
+                        $.each(availableShifts, function(index, shift) {
+                            $('#available_shifts').append($('<option>', {
+                                value: shift.id,
+                                text: shift.date + ' - ' + shift.start_time + ' to ' + shift.end_time
+                            }));
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+        });
+    });
+
 });
 
 function profile_icon_hover() {

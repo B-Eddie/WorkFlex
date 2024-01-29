@@ -53,9 +53,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </header>
 
         <div id="gray-background"></div>
@@ -161,20 +159,17 @@
             <div id="calendar"></div>
             </div>
             <div id="main-rest">
+                <!--{% if message_alerts or request_approved or shift_change %}-->
                 <div id="notifications"> <!--make it so that most important on top or seperate them by groups.
             make if you want to switch times with someone, confirmation popup -->
 <!--                    MAKE IT LIKE A BUNCH OF DROPDOWN MENUES LIKE FINDER-->
                     <h1>Notifications</h1>
                     <div id="notification-content">
                         {% if employee_supervisor == 'employee' %}
-                            <div class="shift-change">
-
-                            </div>
-                            <div id="request-approved">
-
-                            </div>
+                            <div class="shift-change"></div>
+                            <div id="request-approved"></div>
                             {% if message_alerts %}
-                                <div id="message-container">   <!--ignore error-->
+                                <div id="message-container">
                                     <h2>Messages</h2>
                                     <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
                                     {% for message in message_alerts %}
@@ -188,11 +183,10 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-
-                        {% else %}   <!--supervisors-->
+                        {% else %}
                             <div class="shift-change"></div>
                             {% if message_alerts %}
-                                <div id="message-container">   <!--ignore error-->
+                                <div id="message-container">
                                     <h2>Messages</h2>
                                     <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
                                     {% for message in message_alerts %}
@@ -206,9 +200,10 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-
                             <div class="new-employee"></div>
                         {% endif %}
+                        {% endif %}   <!--No idea why this works-->
+
                     </div>
                 </div>
             </div>
