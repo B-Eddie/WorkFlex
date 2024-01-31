@@ -62,6 +62,7 @@
                 <form action="/request-work-time-change-submit" method="post">
                     <label for="shift_title">Your Shift Time:</label>
                     <select id="shift_title" name="shift_title" required>
+                        <option disabled selected value="">Select an option</option>
                         {% for shift in current_times %}
                             <option value="{{ shift.id }}">{{ shift.date }} - {{ shift.start_time }} to {{ shift.end_time }}</option>
                         {% endfor %}
@@ -69,6 +70,7 @@
 
                     <label for="target_employee">Co-worker to Switch With:</label>
                     <select id="target_employee" name="target_employee" required>
+                        <option disabled selected value="">Select an option</option>
                         {% for human in coworkers %}
                             <option value="{{ human.id }}">{{ human.email }}</option>
                         {% endfor %}

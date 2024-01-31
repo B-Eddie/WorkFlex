@@ -284,34 +284,55 @@ header {
 }
 
 /*notifications*/
-#message-container {
+#message-container,
+#shift_change_container {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
     padding: 1em;
 }
 
-.messages {
+.messages,
+.shift_changes {
     display: flex;
     padding-bottom: 1em;
     flex-direction: row;
 }
+.shift_changes {
+    padding-bottom: 1.5em;
+}
 
-.messages i {
+.messages i,
+.shift_changes i {
     margin-top: .2em;
     height: 25px;
     transition: color .3s ease;
 }
 
-.messages i:hover {
+.messages i:hover,
+.shift_changes i:hover {
     cursor: pointer;
     color: lightgray;
 }
 
-#message-container {
+#message-container,
+#shift_change_container {
     width: auto; /* Adjust the width as needed */
-    overflow: auto; /* or overflow: scroll; if you want scrollbars */
+    overflow-wrap: anywhere;
 }
+
+#notification-content,
+#request-approved,
+#message-container {
+    padding-bottom: 1.5em;
+}
+
+#icons-sta {
+    display: flex;
+    flex-direction: column;
+}
+
+
 /*end notifs*/
 
 

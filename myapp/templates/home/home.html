@@ -67,7 +67,7 @@
 
                     <label for="send-message-select">Person to send to:</label>
                     <select id="send-message-select" name="send-message-select" required>
-                        <optgroup label="------ Other employees ------">
+                        <optgroup label="------ Employees ------">
                             {% for employee in people_employees %}
                                 <option value="{{ employee.id }}|e">{{ employee.email }}</option>
                             {% endfor %}
@@ -166,25 +166,27 @@
                         <h1>Notifications</h1>
                         <div id="notification-content">
                             {% if employee_supervisor == 'employee' %}
-                                <div class="shift-change">
-                                    {% if switch_time_alert %}
-                                        <div id="shift_change_container">
-                                            <h2>Shift change requests</h2>
-                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
-                                            {% for sta in switch_time_alert %}
-                                                <div class="shift_changes">
-                                                    <i class="fa-light fa-circle-xmark delete-message" data-message="{{ loop.index0 }}"></i>
-                                                    <div class="message-content">
-                                                        <h2>Requested by: {{ sta['from_employee_email'] }}</h2>
-                                                        <p>Their shift: {{ sta['from_employee_time'] }}</p>
-                                                        <p>Your shift: {{ sta['selected_employee_time'] }}</p>
-                                                    </div>
+                                {% if switch_time_alert %}
+                                    <div id="shift_change_container">
+                                        <h2>Shift change requests</h2>
+                                        <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                                        {% for sta in switch_time_alert %}
+                                            <div class="shift_changes">
+                                                <div id="icons-sta">
+                                                    <i class="fa-light fa-circle-check accept-request-sta" data-message="{{ loop.index0 }}"></i>
+                                                    <i class="fa-light fa-circle-xmark decline-request-sta"></i>
+                                                    <input type="hidden" class="sta-to-id" name="sta-to-id" value="{{ sta['to_employee_shift_id'] }}">
+                                                    <input type="hidden" class="sta-from-id" name="sta-from-id" value="{{ sta['from_employee_shift_id'] }}">
                                                 </div>
+                                                <div class="message-content">
+                                                    <h2>Requested by: {{ sta['from_employee_email'] }}</h2>
+                                                    <p>Their shift: {{ sta['from_employee_time'] }}</p>
+                                                    <p>Your shift: {{ sta['selected_employee_time'] }}</p>
                                                 </div>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                                 <div id="request-approved"></div>
                                 {% if message_alerts %}
                                     <div id="message-container">

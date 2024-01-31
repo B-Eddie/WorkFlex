@@ -35,12 +35,53 @@ document.addEventListener('DOMContentLoaded', function() {
         $('.fc-next-button').html('<i class="material-icons">navigate_next</i>');
         $('.fc-prev-button').html('<i class="material-icons">navigate_before</i>');
     });
+
     $(document).ready(function() {
         $('.delete-message').click(function() {
             var index = $(this).data('message');
             $.ajax({
                 type: 'POST',
                 url: '/delete-message',
+                data: { index: index },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        // Refresh the page or update the message list as needed
+                        location.reload(); // This reloads the page
+                    } else {
+                        console.log('Failed to delete message.');
+                    }
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $('.decline-request-sta').click(function() {
+            var index = $(this).data('message');
+            $.ajax({
+                type: 'POST',
+                url: '/decline-request-sta',
+                data: { index: index },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        // Refresh the page or update the message list as needed
+                        location.reload(); // This reloads the page
+                    } else {
+                        console.log('Failed to delete message.');
+                    }
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $('.accept-request-sta').click(function() {
+            var index = $(this).data('message');
+            var shiftEventId1 = $(this).closest('.shift_changes').find('.sta-to-id').val();
+            var shiftEventId2 = $(this).closest('.shift_changes').find('.sta-from-id').val();
+            $.ajax({
+                type: 'POST',
+                url: '/accept-request-sta/' + shiftEventId1 + "|" + shiftEventId2,
                 data: { index: index },
                 success: function(response) {
                     if (response.status == 'success') {
