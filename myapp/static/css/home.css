@@ -307,6 +307,11 @@ header {
     cursor: pointer;
     color: lightgray;
 }
+
+#message-container {
+    width: auto; /* Adjust the width as needed */
+    overflow: auto; /* or overflow: scroll; if you want scrollbars */
+}
 /*end notifs*/
 
 

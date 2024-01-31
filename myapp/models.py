@@ -10,8 +10,8 @@ class Employee(db.Model):
     email = db.Column(db.String(256), unique=True, nullable=False)
     supervisor_email = db.Column(db.String(502), unique=False, nullable=False)
 
-    switch_times_alert = db.Column(db.Text, unique=False, nullable=True)
-    schedule_change_alert = db.Column(db.Text, unique=False, nullable=True)
+    switch_times_alert = db.Column(db.Text, unique=False, nullable=True) # when person requests to change worktime
+    schedule_change_alert = db.Column(db.Text, unique=False, nullable=True) # when schedule changes
     request_alert = db.Column(db.Text, unique=False,
                               nullable=True)  # like when supervisor approves a sick day or vacation day DELETE?
     msg_alert = db.Column(db.Text, unique=False, nullable=True)
