@@ -158,73 +158,93 @@
             <div id="calendar"></div>
             </div>
             <div id="main-rest">
-                {% if message_alerts or request_approved or switch_time_alert %}
+
                     <div id="notifications">
-                        <!--make it so that most important on top or seperate them by groups.
-                make if you want to switch times with someone, confirmation popup -->
-    <!--                    MAKE IT LIKE A BUNCH OF DROPDOWN MENUES LIKE FINDER-->
-                        <h1>Notifications</h1>
                         <div id="notification-content">
                             {% if employee_supervisor == 'employee' %}
-                                {% if switch_time_alert %}
-                                    <div id="shift_change_container">
-                                        <h2>Shift change requests</h2>
-                                        <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
-                                        {% for sta in switch_time_alert %}
-                                            <div class="shift_changes">
-                                                <div id="icons-sta">
-                                                    <i class="fa-light fa-circle-check accept-request-sta" data-message="{{ loop.index0 }}"></i>
-                                                    <i class="fa-light fa-circle-xmark decline-request-sta"></i>
-                                                    <input type="hidden" class="sta-to-id" name="sta-to-id" value="{{ sta['to_employee_shift_id'] }}">
-                                                    <input type="hidden" class="sta-from-id" name="sta-from-id" value="{{ sta['from_employee_shift_id'] }}">
+                                {% if switch_time_alert or schedule_change_alert or message_alerts %}
+                                    <h1>Notifications</h1>
+                                    {% if switch_time_alert %}
+                                        <div id="shift-change-container">
+                                            <h2>Shift change requests</h2>
+                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                                            {% for sta in switch_time_alert %}
+                                                <div class="shift-changes">
+                                                    <div id="icons-sta">
+                                                        <i class="fa-light fa-circle-check accept-request-sta" data-message="{{ loop.index0 }}"></i>
+                                                        <i class="fa-light fa-circle-xmark decline-request-sta" data-message="{{ loop.index0 }}"></i>
+                                                        <input type="hidden" class="sta-to-id" name="sta-to-id" value="{{ sta['to_employee_shift_id'] }}">
+                                                        <input type="hidden" class="sta-from-id" name="sta-from-id" value="{{ sta['from_employee_shift_id'] }}">
+                                                    </div>
+                                                    <div class="message-content">
+                                                        <h2>Requested by: {{ sta['from_employee_email'] }}</h2>
+                                                        <p>Their shift: {{ sta['from_employee_time'] }}</p>
+                                                        <p>Your shift: {{ sta['selected_employee_time'] }}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="message-content">
-                                                    <h2>Requested by: {{ sta['from_employee_email'] }}</h2>
-                                                    <p>Their shift: {{ sta['from_employee_time'] }}</p>
-                                                    <p>Your shift: {{ sta['selected_employee_time'] }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if schedule_change_alert %}
+                                        <div id="request-approve-container">
+                                            <h2>Approved requests</h2>
+                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                                            {% for sca in schedule_change_alert %}
+                                                <div class="requests-approve">
+                                                    <div id="icons-sca">
+                                                        <i class="fa-light fa-circle-xmark decline-request-sca" data-message="{{ loop.index0 }}"></i>
+                                                        <input type="hidden" class="sca-to-id" name="sca-to-id" value="{{ sca['to_employee_shift_id'] }}">
+                                                        <input type="hidden" class="sca-from-id" name="sca-from-id" value="{{ sca['from_employee_shift_id'] }}">
+                                                    </div>
+                                                    <div class="message-content">
+                                                        <h2>From: {{ sca['from_employee_email'] }}</h2>
+                                                        <p>Original shift: {{ sca['from_employee_time'] }}</p>
+                                                        <p>New shift: {{ sca['selected_employee_time'] }}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                                <div id="request-approved"></div>
-                                {% if message_alerts %}
-                                    <div id="message-container">
-                                        <h2>Messages</h2>
-                                        <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
-                                        {% for message in message_alerts %}
-                                            <div class="messages">
-                                                <i class="fa-light fa-circle-xmark delete-message" data-message="{{ loop.index0 }}"></i>
-                                                <div class="message-content">
-                                                    <h2>{{ message['from_employee_email'] }}</h2>
-                                                    <p>{{ message['message'] }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if message_alerts %}
+                                        <div id="message-container">
+                                            <h2>Messages</h2>
+                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                                            {% for message in message_alerts %}
+                                                <div class="messages">
+                                                    <i class="fa-light fa-circle-xmark delete-message" data-message="{{ loop.index0 }}"></i>
+                                                    <div class="message-content">
+                                                        <h2>{{ message['from_employee_email'] }}</h2>
+                                                        <p>{{ message['message'] }}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% else %}
-                                <div class="shift-change"></div>
-                                {% if message_alerts %}
-                                    <div id="message-container">
-                                        <h2>Messages</h2>
-                                        <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
-                                        {% for message in message_alerts %}
-                                            <div class="messages">
-                                                <i class="fa-light fa-circle-xmark delete-message" data-message="{{ loop.index0 }}"></i>
-                                                <div class="message-content">
-                                                    <h2>{{ message['from_employee_email'] }}</h2>
-                                                    <p>{{ message['message'] }}</p>
+                                {% if message_alerts or new_employee %}
+                                    {% if message_alerts %}
+                                        <div id="message-container">
+                                            <h2>Messages</h2>
+                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                                            {% for message in message_alerts %}
+                                                <div class="messages">
+                                                    <i class="fa-light fa-circle-xmark delete-message" data-message="{{ loop.index0 }}"></i>
+                                                    <div class="message-content">
+                                                        <h2>{{ message['from_employee_email'] }}</h2>
+                                                        <p>{{ message['message'] }}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    <div class="new-employee"></div>
                                 {% endif %}
-                                <div class="new-employee"></div>
                             {% endif %}
                         </div>
                     </div>
-                {% endif %}
             </div>
 
 

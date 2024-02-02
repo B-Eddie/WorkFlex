@@ -15,6 +15,9 @@
 
 
 main {
+    /*display: grid;
+    grid-template-rows: repeat(3, 33%);
+    grid-template-col*/
     text-align: left;
     justify-content: center;
     background-color: #eff1f7;
@@ -285,46 +288,51 @@ header {
 
 /*notifications*/
 #message-container,
-#shift_change_container {
+#shift-change-container,
+#request-approve-container {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
     padding: 1em;
 }
 
+#message-container,
+#shift-change-container,
+#request-approve-container {
+    width: auto; /* Adjust the width as needed */
+    overflow-wrap: anywhere;
+}
+
 .messages,
-.shift_changes {
+.shift-changes,
+.requests-approve {
     display: flex;
     padding-bottom: 1em;
     flex-direction: row;
 }
-.shift_changes {
+.shift-changes {
     padding-bottom: 1.5em;
 }
 
 .messages i,
-.shift_changes i {
+.shift-changes i,
+.requests-approve i {
     margin-top: .2em;
     height: 25px;
     transition: color .3s ease;
 }
 
 .messages i:hover,
-.shift_changes i:hover {
+.shift-changes i:hover,
+.requests-approve i:hover {
     cursor: pointer;
     color: lightgray;
 }
 
+#request-approve-container,
 #message-container,
-#shift_change_container {
-    width: auto; /* Adjust the width as needed */
-    overflow-wrap: anywhere;
-}
-
-#notification-content,
-#request-approved,
-#message-container {
-    padding-bottom: 1.5em;
+#shift-change-container {
+    margin-top: 1em;
 }
 
 #icons-sta {

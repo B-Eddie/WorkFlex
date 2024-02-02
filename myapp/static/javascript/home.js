@@ -77,11 +77,29 @@ document.addEventListener('DOMContentLoaded', function() {
     $(document).ready(function() {
         $('.accept-request-sta').click(function() {
             var index = $(this).data('message');
-            var shiftEventId1 = $(this).closest('.shift_changes').find('.sta-to-id').val();
-            var shiftEventId2 = $(this).closest('.shift_changes').find('.sta-from-id').val();
+            var shiftEventId1 = $(this).closest('.shift-changes').find('.sta-to-id').val();
+            var shiftEventId2 = $(this).closest('.shift-changes').find('.sta-from-id').val();
             $.ajax({
                 type: 'POST',
                 url: '/accept-request-sta/' + shiftEventId1 + "|" + shiftEventId2,
+                data: { index: index },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        // Refresh the page or update the message list as needed
+                        location.reload(); // This reloads the page
+                    } else {
+                        console.log('Failed to delete message.');
+                    }
+                }
+            });
+        });
+    });
+    $(document).ready(function() {
+        $('.decline-request-sca').click(function() {
+            var index = $(this).data('message');
+            $.ajax({
+                type: 'POST',
+                url: '/decline-request-sca',
                 data: { index: index },
                 success: function(response) {
                     if (response.status == 'success') {
