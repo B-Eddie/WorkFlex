@@ -1,15 +1,16 @@
 * {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif
 }
 
 :root {
     --light-blue : #33ABEF;
-    --dark-blue : #004AAD;
-    --light-blue-2 : #bed9f2;
+    --dark-blue : #396b9c;
+    --light-blue-2 : #CDE0F2;
+
     --white-green : #D4EFEB;
     --dusty-pink : #D58A94;
-
+    --light-gray : #f0f0f0;
     --gray-color : #808080;
 }
 
@@ -33,7 +34,7 @@ header {
     flex: 1 1 auto;
     padding-right: 10em;
     padding-left: 1em;
-    background-color: var(--light-blue);
+    background-color: #B3DAFF;
 }
 
 #nav1 {
@@ -46,7 +47,6 @@ header {
     display: flex;
     flex: 1 1 auto;
     width: 100%;
-    color: #bed9f2;
     align-items: center;
 }
 
@@ -59,12 +59,17 @@ header {
     display: flex;
     flex-direction: row;
     margin-top: -1.2em;
-    color: var(--dark-blue);
+    color: black;
     z-index: 5;
 }
 
 #profile h4 {
-    color: var(--light-blue-2);
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#profile h1 {
+    color: black;
 }
 
 #profile i {
@@ -134,12 +139,12 @@ header {
 
 
 .navh:hover {
-    background-color: #5cbcf2;
+    background-color: #89CAF0;
     cursor: pointer;
 }
 
 .rwtc {
-    background-color: #adddf9 !important;
+    background-color: #51ADE0 !important;
 }
 
 

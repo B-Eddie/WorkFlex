@@ -1,17 +1,19 @@
 * {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif
 }
 
 :root {
     --light-blue : #33ABEF;
-    --dark-blue : #004AAD;
-    --light-blue-2 : #bed9f2;
+    --dark-blue : #396b9c;
+    --light-blue-2 : #CDE0F2;
+
     --white-green : #D4EFEB;
     --dusty-pink : #D58A94;
-
+    --light-gray : #f0f0f0;
     --gray-color : #808080;
 }
+
 
 .fa-light {
     margin-right: 1em;
@@ -30,10 +32,6 @@
 }
 
 
-.visible {
-    visibility: visible !important;
-}
-
 main {
     text-align: left;
     justify-content: center;
@@ -48,7 +46,7 @@ header {
     flex: 1 1 auto;
     padding-right: 10em;
     padding-left: 1em;
-    background-color: var(--light-blue);
+    background-color: #B3DAFF;
 }
 
 #nav1 {
@@ -74,12 +72,13 @@ header {
     display: flex;
     flex-direction: row;
     margin-top: -1.2em;
-    color: var(--dark-blue);
+    color: black;
     z-index: 5;
 }
 
 #profile h4 {
-    color: var(--light-blue-2);
+    font-weight: normal;
+    text-decoration: none;
 }
 
 #profile i {
@@ -149,12 +148,12 @@ header {
 
 
 .navh:hover {
-    background-color: #5cbcf2;
+    background-color: #89CAF0;
     cursor: pointer;
 }
 
 #highlight {
-    background-color: #adddf9 !important;
+    background-color: #51ADE0 !important;
 }
 
 #calendar {
@@ -182,12 +181,36 @@ header {
     padding-top: 20em;
 }
 
+
+.visible {
+    visibility: visible !important;
+}
+
+
 .fc .fc-button {
     height: 3em;
 }
 
+.fc .fc-button {
+    background-color: white;
+}
+
+.fc-left {
+    display: flex;
+}
+
+.fc-today,
+.fc-unthemed td.fc-today {
+    background: var(--light-blue-2) !important;
+}
+
+.fc-center h2 {
+    padding-right: 4em !important;
+    width: 350px;
+}
+
 .fc-button {
-    transition: color .3s linear
+    transition: color .3s linear;
 }
 
 .fc-button:hover {
@@ -196,10 +219,17 @@ header {
 
 .fc-state-hover {
     background-position: 0 -46px !important;
+    color: white !important;
 }
 
 .fc-state-disabled {
     color: white !important;
+    text-shadow: none !important;
+}
+
+.fc-state-default {
+    color: white !important;
+    text-shadow: none !important;
 }
 
 .fc-center {
@@ -208,5 +238,23 @@ header {
 }
 
 .fc-center h2 {
-    width: 300px;
+    width: 400px;
+}
+
+.fc-corner-right,
+.fc-corner-left,
+.fc-agendaWeek-button {
+    background-color: var(--dark-blue) !important;
+    background-image: none !important;
+    transition: background-color .2s linear !important;
+}
+
+.material-icons {
+    color: white !important;
+}
+
+.fc-corner-right:hover,
+.fc-corner-left:hover,
+.fc-agendaWeek-button:hover {
+    background-color: var(--light-blue) !important;
 }

@@ -42,7 +42,7 @@
                 {% endif %}
                 <div id="profile">
                     <!--make icon have name when pressed and if too long, make it "..."-->
-                    <i class="fa-light fa-user"></i>
+                    <i class="fa-light fa-user" id="left-move"></i>
                     <div id="profile-right">
                         <h1 id="profile-popup-username">{{ info.username }}</h1>
                         <h4 id="profile-popup-es">{{ employee_supervisor }}</h4>
@@ -57,10 +57,10 @@
 
         <div id="gray-background"></div>
         <div id="selective-gray-background"></div>
-
         {% if employee_supervisor == 'employee' %}
             <div id="send-message-popup" class="info-change">
                 <h1>Send a message</h1>
+                <div class="x-button-popup"><i class="fa-regular fa-x" onclick="gray_click()"></i></div>
                 <br><br>
                 <form action="/send-message" method="post">
                     <input type="text" name="message" placeholder="Write your message here" required>
@@ -84,6 +84,7 @@
 
         <div id="time-worked-week-popup" class="info-change">
             <h1>Change your hours worked this week</h1>
+            <div class="x-button-popup"><i class="fa-regular fa-x" onclick="gray_click()"></i></div>
             <br><br>
             <form action="/time-worked-week-change" method="post">
                 <input type="text" name="time-worked-week" placeholder="Enter hours worked" required>
@@ -93,6 +94,7 @@
 
         <div id="vacation-days-left" class="info-change">
             <h1>Change your amount of vacation days left</h1>
+            <div class="x-button-popup"><i class="fa-regular fa-x" onclick="gray_click()"></i></div>
             <br><br>
             <form action="/vacation-days-left-change" method="post">
                 <input type="text" name="vacation-days-left" placeholder="Enter vacation days left" required>
@@ -102,6 +104,7 @@
 
         <div id="sick-days-left" class="info-change">
             <h1>Change your amount of sick days left</h1>
+            <div class="x-button-popup"><i class="fa-regular fa-x" onclick="gray_click()"></i></div>
             <br><br>
             <form action="/sick-days-left-change" method="post">
                 <input type="text" name="sick-days-left" placeholder="Enter sick days left" required>
@@ -111,11 +114,31 @@
 
 
         <main>
+            <div id="calendar"></div>
+
+            <div id="message-container">
+                <h2>Messages</h2>
+                <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                <div id="message-content">
+                    {% if message_alerts %}
+                        {% for message in message_alerts %}
+                            <div class="messages">
+                                <i class="fa-light fa-circle-xmark delete-message" data-message="{{ loop.index0 }}"></i>
+                                <div class="message-content">
+                                    <h3>{{ message['from_employee_email'] }}</h3>
+                                    <p>{{ message['message'] }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
             <div id="info">
                     {% if employee_supervisor == 'employee' %}
                         <div id="send-message">       <!--ignore error-->
                             <div class="info-section" id="send-message-left">
-                                <i class="fa-light fa-envelope"></i>
+                                <i class="fa-light fa-envelope" style="padding-top: 12px;"></i>
                                 <div class="info-content">
                                     <h4 style="font-weight: normal;">Send a message</h4>
                                 </div>
@@ -136,7 +159,7 @@
 
                     <div id="sick-days">
                         <div class="info-section" id="sic-left">
-                            <i class="fa-light fa-thermometer"></i>
+                            <i class="fa-light fa-thermometer" style="padding-top: 9px"></i>
                             <div class="info-content">
                                 <h4 style="font-weight: normal;">Sick Days left</h4>
                                 <h4 id="sic-right-txt" class="info-highlight">{{ info.sick_days }}</h4>
@@ -144,108 +167,84 @@
                         </div>
                     </div>
 
-                    <div id="time-worked-week">
-                        <div class="info-section" id="tim-left">
-                            <i class="fa-light fa-clock"></i>
-                            <div class="info-content">
-                                <h4 style="font-weight: normal;">Hours worked this week</h4>
-                                <h4 id="tim-right-txt" class="info-highlight">{{ info.weekTime_worked }}</h4>
+                    {% if employee_supervisor == 'employee' %}  <!--ignore errors-->
+                        <div id="time-worked-week">
+                            <div class="info-section" id="tim-left">
+                                <i class="fa-light fa-clock"></i>
+                                <div class="info-content">
+                                    <h4 style="font-weight: normal;">Hours worked this week</h4>
+                                    <h4 id="tim-right-txt" class="info-highlight">{{ info.weekTime_worked }}</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            <div class="white-background" style="padding-bottom: 20em;">
-            <div id="calendar"></div>
-            </div>
-            <div id="main-rest">
-
-                    <div id="notifications">
-                        <div id="notification-content">
-                            {% if employee_supervisor == 'employee' %}
-                                {% if switch_time_alert or schedule_change_alert or message_alerts %}
-                                    <h1>Notifications</h1>
-                                    {% if switch_time_alert %}
-                                        <div id="shift-change-container">
-                                            <h2>Shift change requests</h2>
-                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
-                                            {% for sta in switch_time_alert %}
-                                                <div class="shift-changes">
-                                                    <div id="icons-sta">
-                                                        <i class="fa-light fa-circle-check accept-request-sta" data-message="{{ loop.index0 }}"></i>
-                                                        <i class="fa-light fa-circle-xmark decline-request-sta" data-message="{{ loop.index0 }}"></i>
-                                                        <input type="hidden" class="sta-to-id" name="sta-to-id" value="{{ sta['to_employee_shift_id'] }}">
-                                                        <input type="hidden" class="sta-from-id" name="sta-from-id" value="{{ sta['from_employee_shift_id'] }}">
-                                                    </div>
-                                                    <div class="message-content">
-                                                        <h2>Requested by: {{ sta['from_employee_email'] }}</h2>
-                                                        <p>Their shift: {{ sta['from_employee_time'] }}</p>
-                                                        <p>Your shift: {{ sta['selected_employee_time'] }}</p>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-
-                                    {% if schedule_change_alert %}
-                                        <div id="request-approve-container">
-                                            <h2>Approved requests</h2>
-                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
-                                            {% for sca in schedule_change_alert %}
-                                                <div class="requests-approve">
-                                                    <div id="icons-sca">
-                                                        <i class="fa-light fa-circle-xmark decline-request-sca" data-message="{{ loop.index0 }}"></i>
-                                                        <input type="hidden" class="sca-to-id" name="sca-to-id" value="{{ sca['to_employee_shift_id'] }}">
-                                                        <input type="hidden" class="sca-from-id" name="sca-from-id" value="{{ sca['from_employee_shift_id'] }}">
-                                                    </div>
-                                                    <div class="message-content">
-                                                        <h2>From: {{ sca['from_employee_email'] }}</h2>
-                                                        <p>Original shift: {{ sca['from_employee_time'] }}</p>
-                                                        <p>New shift: {{ sca['selected_employee_time'] }}</p>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-
-                                    {% if message_alerts %}
-                                        <div id="message-container">
-                                            <h2>Messages</h2>
-                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
-                                            {% for message in message_alerts %}
-                                                <div class="messages">
-                                                    <i class="fa-light fa-circle-xmark delete-message" data-message="{{ loop.index0 }}"></i>
-                                                    <div class="message-content">
-                                                        <h2>{{ message['from_employee_email'] }}</h2>
-                                                        <p>{{ message['message'] }}</p>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-                                {% endif %}
-                            {% else %}
-                                {% if message_alerts or new_employee %}
-                                    {% if message_alerts %}
-                                        <div id="message-container">
-                                            <h2>Messages</h2>
-                                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
-                                            {% for message in message_alerts %}
-                                                <div class="messages">
-                                                    <i class="fa-light fa-circle-xmark delete-message" data-message="{{ loop.index0 }}"></i>
-                                                    <div class="message-content">
-                                                        <h2>{{ message['from_employee_email'] }}</h2>
-                                                        <p>{{ message['message'] }}</p>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-                                    <div class="new-employee"></div>
-                                {% endif %}
-                            {% endif %}
+                    {% else %}
+                        <div id="time-worked-week" style="margin-right: -10.5em;">
+                            <div class="info-section" id="tim-left">
+                                <i class="fa-light fa-clock"></i>
+                                <div class="info-content">
+                                    <h4 style="font-weight: normal;">Hours worked this week</h4>
+                                    <h4 id="tim-right-txt" class="info-highlight">{{ info.weekTime_worked }}</h4>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-            </div>
+                    {% endif %}
+                </div>
+
+
+            {% if employee_supervisor == 'employee' %}
+                {% if switch_time_alert or schedule_change_alert %}
+                    {% if switch_time_alert %}
+                        <div id="shift-change-container">
+                            <h2>Shift change requests</h2>
+                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                            <div id="shift-change-content">
+                                {% for sta in switch_time_alert %}
+                                    <div class="shift-changes">
+                                        <div id="icons-sta">
+                                            <i class="fa-light fa-circle-check accept-request-sta" data-message="{{ loop.index0 }}"></i>
+                                            <i class="fa-light fa-circle-xmark decline-request-sta" data-message="{{ loop.index0 }}"></i>
+                                            <input type="hidden" class="sta-to-id" name="sta-to-id" value="{{ sta['to_employee_shift_id'] }}">
+                                            <input type="hidden" class="sta-from-id" name="sta-from-id" value="{{ sta['from_employee_shift_id'] }}">
+                                        </div>
+                                        <div class="message-content">
+                                            <h3>Requested by: {{ sta['from_employee_email'] }}</h3>
+                                            <p>Their shift: {{ sta['from_employee_time'] }}</p>
+                                            <p>Your shift: {{ sta['selected_employee_time'] }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if schedule_change_alert %}
+                        <div id="request-approve-container">
+                            <h2>Approved requests</h2>
+                            <hr style="border-top: 1px solid #ccc;"><br style="margin-top: 0.1em;">
+                            <div id="request-approve-content">
+                                {% for sca in schedule_change_alert %}
+                                    <div class="requests-approve">
+                                        <div id="icons-sca">
+                                            <i class="fa-light fa-circle-xmark decline-request-sca" data-message="{{ loop.index0 }}"></i>
+                                            <input type="hidden" class="sca-to-id" name="sca-to-id" value="{{ sca['to_employee_shift_id'] }}">
+                                            <input type="hidden" class="sca-from-id" name="sca-from-id" value="{{ sca['from_employee_shift_id'] }}">
+                                        </div>
+                                        <div class="message-content">
+                                            <h3>From: {{ sca['from_employee_email'] }}</h3>
+                                            <p>Original shift: {{ sca['from_employee_time'] }}</p>
+                                            <p>New shift: {{ sca['selected_employee_time'] }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% else %}
+                {% if new_employee %}
+                    <div class="new-employee"></div>
+                {% endif %}
+            {% endif %}
 
 
 
