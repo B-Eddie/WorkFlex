@@ -9,6 +9,7 @@
 app/fullcalendar-6.1.9/*
 .fullcalendar-6.1.9
 fullcalendar-6.1.9/*
+fullcalendar-6.1.9/
 app/__pycache__/
 routes.py
 __init__.py
