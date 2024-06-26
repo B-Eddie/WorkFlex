@@ -133,7 +133,7 @@ header {
 }
 
 .navh {
-    color: var(--dark-blue);
+    color: black;
     white-space: nowrap;
     align-items: center;
     text-decoration: none;

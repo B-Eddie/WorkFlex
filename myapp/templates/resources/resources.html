@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet"> <!--icons-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health Websites</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+  }
+  * {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif
+}
+
+:root {
+    --light-blue : #33ABEF;
+    --dark-blue : #396b9c;
+    --light-blue-2 : #CDE0F2;
+
+    --white-green : #D4EFEB;
+    --dusty-pink : #D58A94;
+    --light-gray : #f0f0f0;
+    --gray-color : #808080;
+}
+
+#gray-background {
+    position: fixed;
+    z-index: 1020410240;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(105, 105, 105, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+#selective-gray-background {
+    position: absolute;
+    top: 8.8em; /* Adjust this value to match the height of your header */
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(105, 105, 105, 0.3);
+    visibility: hidden;
+}
+
+.white-background {
+    background-color: white;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+}
+
+main {
+    display: flex; /* Display flex container */
+    flex-wrap: wrap;
+    text-align: left;
+    justify-content: center;
+    padding-right: 2em;
+    padding-left: 2em;
+    gap: 15px;
+}
+
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding-right: 10em;
+    padding-left: 1em;
+    background-color: #B3DAFF;
+}
+
+#nav1 {
+    padding-top: .2em;
+    padding-bottom: 1em;
+    text-align: left;
+}
+
+#nav2 {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    color: #bed9f2;
+    align-items: center;
+}
+
+#profile {
+    position: relative;
+    padding: 0;
+    margin-left: auto;
+    margin-bottom: -10px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: -1.2em;
+    color: black;
+    z-index: 5;
+}
+
+#profile h4 {
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#profile i {
+    margin-top: .5em;
+}
+
+#profile-right {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*Profile popup*/
+
+#profile-popup {
+    position: absolute;
+    z-index: 12312321320;
+    background-color: white;
+    padding: 2em;
+    visibility: hidden;
+    max-width: 10em;
+    width: 80%;
+    text-align: left;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    top: 100%; /* position it below the #profile element */
+    left: 0;
+}
+
+#profile:hover #profile-popup {
+    visibility: visible;
+}
+
+#profile-popup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#profile-popup h3 {
+    padding-left: .3em;
+}
+
+#profile-popup-logout a {
+    display: block;
+    color: #33ABEF;
+    text-decoration: none;
+}
+
+#profile-popup-logout a:hover {
+    text-decoration: underline;
+}
+
+.navh {
+    color: black;
+    white-space: nowrap;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px !important;
+
+}
+.navh {
+    padding: 16px 40px 13px 40px;
+    transition: background-color 0.3s;
+}
+
+
+.navh:hover {
+    background-color: #89CAF0;
+    cursor: pointer;
+}
+
+
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    width: calc(25% - 20px);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 10px 0;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .search-container {
+    margin-bottom: 20px;
+    padding-top: 1em;
+  }
+
+  .search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  * {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif
+}
+
+:root {
+    --light-blue : #33ABEF;
+    --dark-blue : #396b9c;
+    --light-blue-2 : #CDE0F2;
+
+    --white-green : #D4EFEB;
+    --dusty-pink : #D58A94;
+    --light-gray : #f0f0f0;
+    --gray-color : #808080;
+}
+
+#gray-background {
+    position: fixed;
+    z-index: 1020410240;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(105, 105, 105, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+#selective-gray-background {
+    position: absolute;
+    top: 8.8em; /* Adjust this value to match the height of your header */
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(105, 105, 105, 0.3);
+    visibility: hidden;
+}
+
+.white-background {
+    background-color: white;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+}
+
+main {
+    display: flex; /* Display flex container */
+    flex-wrap: wrap;
+    text-align: left;
+    justify-content: center;
+    padding-right: 2em;
+    padding-left: 2em;
+    gap: 15px;
+}
+
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding-right: 10em;
+    padding-left: 1em;
+    background-color: #B3DAFF;
+}
+
+#nav1 {
+    padding-top: .2em;
+    padding-bottom: 1em;
+    text-align: left;
+}
+
+#nav2 {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    color: #bed9f2;
+    align-items: center;
+}
+
+#profile {
+    position: relative;
+    padding: 0;
+    margin-left: auto;
+    margin-bottom: -10px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: -1.2em;
+    color: black;
+    z-index: 5;
+}
+
+#profile h4 {
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#profile i {
+    margin-top: .5em;
+}
+
+#profile-right {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*Profile popup*/
+
+#profile-popup {
+    position: absolute;
+    z-index: 12312321320;
+    background-color: white;
+    padding: 2em;
+    visibility: hidden;
+    max-width: 10em;
+    width: 80%;
+    text-align: left;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    top: 100%; /* position it below the #profile element */
+    left: 0;
+}
+
+#profile:hover #profile-popup {
+    visibility: visible;
+}
+
+#profile-popup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#profile-popup h3 {
+    padding-left: .3em;
+}
+
+#profile-popup-logout a {
+    display: block;
+    color: #33ABEF;
+    text-decoration: none;
+}
+
+#profile-popup-logout a:hover {
+    text-decoration: underline;
+}
+
+.navh {
+    color: black;
+    white-space: nowrap;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px !important;
+
+}
+.navh {
+    padding: 16px 40px 13px 40px;
+    transition: background-color 0.3s;
+}
+
+
+.navh:hover {
+    background-color: #89CAF0;
+    cursor: pointer;
+}
+
+#home {
+    background-color: #51ADE0 !important;
+}
+
+
+/*not the navbar calendar*/
+#calendar {
+    margin-top: 1em;
+    width: 30em !important;
+    height: 100% !important;
+    font-size: 1em;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    padding: 0.3em;
+}
+
+
+@media (min-width: 600px) {
+  body {
+    font-size: .9em;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    font-size: 1em;
+  }
+}
+
+
+/* the 3 boxes */
+#info {
+    user-select: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    width: 20em;
+    align-items: center;
+    justify-content: center;
+    padding: 3em 1em 2em 1em;
+    color: black;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+}
+
+.info-section {
+    background-color: var(--light-blue-2);
+    padding: 1em;
+    height: 5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.info-section:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.white-background {
+    background-color: white;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+
+
+/* after */
+
+.x-button-popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1vh;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.info-change {
+    position: fixed;
+    z-index: 1020410241;
+    border: 1px solid var(--dark-blue);
+    box-shadow: 2px 5px 5px var(--light-blue);
+    background-color: var(--white-green);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    visibility: hidden;
+    max-width: 400px; /* Adjust the maximum width as needed */
+    width: 80%; /* Set a percentage width for responsiveness */
+    text-align: center; /* Center text within the container */
+}
+
+.info-change input {
+    margin-top: 1em; /* Add spacing between input and button */
+    padding: 1em;
+    width: 100%; /* Make the input full-width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+.info-change button {
+    margin-top: 1em; /* Add spacing above the button */
+    padding: 1em;
+    width: 100%; /* Make the button full-width */
+    border: 1px solid var(--dark-blue);
+    text-decoration: none;
+    background-color: var(--light-blue);
+    transition: background-color 0.3s linear;
+}
+
+.info-change button:hover {
+    background-color: var(--dark-blue);
+    cursor: pointer;
+}
+
+/*notifications*/
+.fa-light {
+    font-size: 1.5em; /* Adjust the icon size */
+}
+.fa-light {
+    margin-right: 1em;
+    font-size: 1.5em;
+}
+#left-move {
+    margin-right: 1em;
+}
+
+#message-container,
+#shift-change-container,
+#request-approve-container {
+    background-color: white;
+    border-radius: 8px;
+    background-color: var(--light-gray);
+    padding: 1em;
+    overflow-wrap: anywhere;
+}
+
+#message-container {
+    width: 50em;
+    height: 17em;
+}
+
+#message-content,
+#shift-change-content,
+#request-approve-content {
+    overflow-y: scroll;
+    height: 83%;
+}
+
+#shift-change-container,
+#request-approve-container {
+    width: 28em;
+    height: 17em;
+}
+
+.messages,
+.shift-changes,
+.requests-approve {
+    display: flex;
+    padding-bottom: 1.5em;
+    flex-direction: row;
+    line-height: 1.5;
+}
+
+.shift-changes {
+    padding-bottom: 1.5em;
+}
+
+.messages i,
+.shift-changes i,
+.requests-approve i {
+    margin-top: .2em;
+    padding-right: .5em;
+    height: 25px;
+    transition: color .3s ease;
+}
+
+.messages i:hover,
+.shift-changes i:hover,
+.requests-approve i:hover {
+    cursor: pointer;
+    color: lightgray;
+}
+
+#request-approve-container,
+#message-container,
+#shift-change-container {
+    margin-top: 1em;
+}
+
+#icons-sta {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*end notifs*/
+
+
+.visible {
+    visibility: visible !important;
+}
+
+.fc-event {
+    font-size: 0.1em !important;
+}
+
+.fc .fc-button {
+    height: 3em;
+}
+
+.fc .fc-button {
+    background-color: white;
+}
+
+.fc-left {
+    display: flex;
+}
+
+.visible {
+    visibility: visible !important;
+}
+.fc-today,
+.fc-unthemed td.fc-today {
+    background: var(--light-blue-2) !important;
+}
+
+.fc-center h2 {
+    padding-right: 4em !important;
+    width: 350px;
+}
+
+.fc-button {
+    transition: color .3s linear;
+}
+
+.fc-button:hover {
+    background-color: white;
+}
+
+.fc-state-hover {
+    background-position: 0 -46px !important;
+    color: white !important;
+}
+
+.fc-state-disabled {
+    color: white !important;
+    text-shadow: none !important;
+}
+
+.fc-state-default {
+    color: white !important;
+    text-shadow: none !important;
+}
+
+.fc-center {
+    border-right-width: 0px;
+    margin-right: 300px;
+}
+
+.fc-center h2 {
+    width: 400px;
+}
+
+.fc-corner-right,
+.fc-corner-left {
+    background-color: var(--dark-blue) !important;
+    background-image: none !important;
+    transition: background-color .2s linear !important;
+}
+
+.material-icons {
+    color: white !important;
+}
+
+.fc-corner-right:hover,
+.fc-corner-left:hover {
+    background-color: var(--light-blue) !important;
+}
+
+.fc-time-grid-event .fc-time {
+    white-space: pre-wrap !important;
+}
+
+</style>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+
+    function profile_icon_hover() {
+    document.getElementById("profile-popup").style.visibility = "visible";
+    document.getElementById("selective-gray-background").classList.add("visible");
+}
+function profile_icon_out_hover() {
+    document.getElementById("profile-popup").style.visibility = "hidden";
+    document.getElementById("selective-gray-background").classList.remove("visible");
+}
+
+
+
+    document.getElementById("profile").addEventListener("mouseover", profile_icon_hover);
+    document.getElementById("profile").addEventListener("mouseout", profile_icon_out_hover);
+    document.getElementById("profile-popup").addEventListener("mouseout", profile_icon_out_hover);
+    document.getElementById("profile-popup").addEventListener("mouseover", profile_icon_hover);
+
+
+    searchInput.addEventListener('input', function() {
+      const searchTerm = searchInput.value.toLowerCase();
+
+      cards.forEach(card => {
+        const textContent = card.textContent.toLowerCase();
+        if (textContent.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  })
+</script>
+
+</head>
+<body>
+<div id="selective-gray-background"></div>
+<header>
+            <div id="nav1">
+                <img src="../../static/images/horizontal-logo.png" alt="image" width="200em">
+            </div>
+            <div id="nav2">
+                <a class="navh" href="{{ url_for('bp.home') }}">Home</a>
+                <a class="navh" href="{{ url_for('bp.calendar') }}">Calendar</a>
+                {% if employee_supervisor == 'employee' %}
+                    <a class="navh" href="{{ url_for('bp.rwtc') }}">Shift Change</a>
+                    <a class="add_shifts navh" href="{{ url_for('bp.shift_add') }}">Add Shifts</a>
+                {% endif %}
+                {% if employee_supervisor == 'supervisor' %}
+                    <a class="navh" href="{{ url_for('bp.employees') }}">Employees</a>
+                    <a class="navh add_shifts" href="{{ url_for('bp.shift_add') }}">Add Shifts</a>
+                {% endif %}
+                <a class="navh" style="background-color: #51ADE0 !important;" href="{{ url_for('bp.resources') }}">Resources</a>
+                <div id="profile">
+                    <!--make icon have name when pressed and if too long, make it "..."-->
+                    <i class="fa-light fa-user"></i>
+                    <div id="profile-right">
+                        <h1 id="profile-popup-username">{{ info.username }}</h1>
+                        <h4 id="profile-popup-es">{{ employee_supervisor }}</h4>
+                        <div id="profile-popup">
+                            <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                            <h3 id="profile-popup-logout"><a href="{{ url_for('bp.logout') }}">Log Out</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+<div class="search-container">
+  <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://psychologytoday.com">psychologytoday.com</a></h3>
+      <p>Comprehensive mental health information.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://simplepractice.com">simplepractice.com</a></h3>
+      <p>Streamlined mental health practice management.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://verywellmind.com">verywellmind.com</a></h3>
+      <p>Accessible mental health articles and resources.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://betterhelp.com">betterhelp.com</a></h3>
+      <p>Online counseling and therapy services.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://psychcentral.com">psychcentral.com</a></h3>
+      <p>Mental health news, resources, and quizzes.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://therapynotes.com">therapynotes.com</a></h3>
+      <p>Electronic health records system for therapists.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://clientsecure.me">clientsecure.me</a></h3>
+      <p>Client communication and scheduling platform.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://psychologies.ru">psychologies.ru</a></h3>
+      <p>Mental health articles and resources in Russian.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://choosingtherapy.com">choosingtherapy.com</a></h3>
+      <p>Directory of therapists and mental health resources.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://focusmate.com">focusmate.com</a></h3>
+      <p>Virtual coworking platform to boost productivity.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://calm.com">calm.com</a></h3>
+      <p>Meditation and relaxation app for stress relief.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://pysophic.com">pysophic.com</a></h3>
+      <p>Mental health resources and self-improvement tools.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://additudemag.com">additudemag.com</a></h3>
+      <p>Resources for ADHD and related conditions.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://headspace.com">headspace.com</a></h3>
+      <p>Mindfulness and meditation app for mental well-being.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://loopearplugs.com">loopearplugs.com</a></h3>
+      <p>Sleep and relaxation aids, including earplugs.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://headway.co">headway.co</a></h3>
+      <p>Mental health coaching and support services.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://mind.org.uk">mind.org.uk</a></h3>
+      <p>Mental health charity providing support and information.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://therapyportal.com">therapyportal.com</a></h3>
+      <p>Client management and appointment scheduling for therapists.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://guidapsicologi.it">guidapsicologi.it</a></h3>
+      <p>Mental health resources and therapist directory in Italian.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://helpguide.org">helpguide.org</a></h3>
+      <p>Empowering articles and resources for mental health.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://talkspace.com">talkspace.com</a></h3>
+      <p>Online therapy and counseling platform.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://helloalma.com">helloalma.com</a></h3>
+      <p>Mental health articles and resources for self-improvement.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://yourbrainonporn.com">yourbrainonporn.com</a></h3>
+      <p>Information on the effects of pornography on the brain.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://positivepsychology.com">positivepsychology.com</a></h3>
+      <p>Resources and articles on positive psychology.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://scienceofpeople.com">scienceofpeople.com</a></h3>
+      <p>Insights and research on human behavior.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://incels.is">incels.is</a></h3>
+      <p>Online community for "involuntary celibates" (not recommended).</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://regain.us">regain.us</a></h3>
+      <p>Couples therapy and relationship counseling platform.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://h-navi.jp">h-navi.jp</a></h3>
+      <p>Mental health resources and support in Japanese.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://lifestance.com">lifestance.com</a></h3>
+      <p>Mental health services and therapy providers.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://theranest.com">theranest.com</a></h3>
+      <p>Practice management software for mental health professionals.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://growtherapy.com">growtherapy.com</a></h3>
+      <p>Therapy services and resources for personal growth.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://therapyappointment.com">therapyappointment.com</a></h3>
+      <p>Practice management solution for therapists.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://psychologue.net">psychologue.net</a></h3>
+      <p>Directory of psychologists and mental health resources in French.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://clinical-partners.co.uk">clinical-partners.co.uk</a></h3>
+      <p>Mental health assessments and treatment in the UK.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://alessandropellizzari.com">alessandropellizzari.com</a></h3>
+      <p>Personal website of Alessandro Pellizzari, likely mental health-related.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://samhsa.gov">samhsa.gov</a></h3>
+      <p>Substance Abuse and Mental Health Services Administration (SAMHSA) resources.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://markmanson.net">markmanson.net</a></h3>
+      <p>Personal development articles and resources.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://embrace-autism.com">embrace-autism.com</a></h3>
+      <p>Resources and support for autism spectrum disorders.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://mhanational.org">mhanational.org</a></h3>
+      <p>Mental Health America resources and advocacy.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://psycom.net">psycom.net</a></h3>
+      <p>Mental health information and resources.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://happierhuman.com">happierhuman.com</a></h3>
+      <p>Tips and resources for personal happiness and well-being.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://7cups.com">7cups.com</a></h3>
+      <p>Online emotional support and counseling.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://gottman.com">gottman.com</a></h3>
+      <p>Relationship advice and resources from Dr. John Gottman.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://powerdiary.com">powerdiary.com</a></h3>
+      <p>Practice management software for health practitioners.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://halaxy.com">halaxy.com</a></h3>
+      <p>Practice management and telehealth platform for healthcare professionals.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://priorygroup.com">priorygroup.com</a></h3>
+      <p>Mental health treatment services and resources.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://insighttimer.com">insighttimer.com</a></h3>
+      <p>Meditation and mindfulness app for mental well-being.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://okgordina.ru">okgordina.ru</a></h3>
+      <p>Mental health resources and information in Russian.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="content">
+      <h3><a target="_blank" href="https://attachmentproject.com">attachmentproject.com</a></h3>
+      <p>Resources and support for understanding attachment theory.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
