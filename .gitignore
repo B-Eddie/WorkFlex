@@ -154,8 +154,9 @@ fabric.properties
 .idea/**/azureSettings.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,macos
-fullcalendar-6.1.9
+__pycache__/
 __pycache__
-.idea
-venv
+.idea/
 venv/
+fullcalendar-6.1.9/
+fullcalendar-6.1.9
